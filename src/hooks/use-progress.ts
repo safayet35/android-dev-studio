@@ -9,7 +9,12 @@ export function useProgress() {
   useEffect(() => {
     try {
       const raw = localStorage.getItem(KEY);
-      if (raw) setDone(JSON.parse(raw) as string[]);
+      if (raw) {
+        const parsed: unknown = JSON.parse(raw);
+        if (Array.isArray(parsed) && parsed.every((v) => typeof v === "string")) {
+          setDone(parsed);
+        }
+      }
     } catch {
       /* ignore unreadable storage */
     }
@@ -25,12 +30,17 @@ export function useProgress() {
     }
   }, []);
 
-  const toggle = useCallback(
-    (id: string) => {
-      persist(done.includes(id) ? done.filter((d) => d !== id) : [...done, id]);
-    },
-    [done, persist],
-  );
+  const toggle = useCallback((id: string) => {
+    setDone((prev) => {
+      const next = prev.includes(id) ? prev.filter((d) => d !== id) : [...prev, id];
+      try {
+        localStorage.setItem(KEY, JSON.stringify(next));
+      } catch {
+        /* ignore full storage */
+      }
+      return next;
+    });
+  }, []);
 
   const reset = useCallback(() => persist([]), [persist]);
 

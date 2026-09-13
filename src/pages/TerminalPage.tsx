@@ -1,27 +1,17 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/PageHeader";
+import { Card } from "@/components/Card";
 import { TerminalSim } from "@/components/TerminalSim";
+import { useDocumentMeta } from "@/hooks/use-document-meta";
 
-export const Route = createFileRoute("/terminal")({
-  head: () => ({
-    meta: [
-      { title: "Terminal Simulator — Android Web Development" },
-      {
-        name: "description",
-        content:
-          "Practice Termux commands in a safe simulated terminal before you run anything on your own phone.",
-      },
-      { property: "og:title", content: "Termux Terminal Simulator" },
-      {
-        property: "og:description",
-        content: "Try pkg update, node -v, and a Vite scaffold without installing anything.",
-      },
-    ],
-  }),
-  component: TerminalPage,
-});
+export default function TerminalPage() {
+  useDocumentMeta({
+    title: "Terminal Simulator — Android Web Development",
+    description:
+      "Practice Termux commands in a safe simulated terminal before you run anything on your own phone.",
+    ogTitle: "Termux Terminal Simulator",
+    ogDescription: "Try pkg update, node -v, and a Vite scaffold without installing anything.",
+  });
 
-function TerminalPage() {
   return (
     <div>
       <PageHeader
@@ -31,7 +21,7 @@ function TerminalPage() {
       />
       <div className="mx-auto max-w-3xl space-y-4 px-4 py-8 sm:px-6">
         <TerminalSim />
-        <div className="rounded-2xl border border-border bg-card p-4">
+        <Card>
           <h2 className="font-display text-lg text-foreground">Reading a command</h2>
           <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
             <li>
@@ -43,14 +33,14 @@ function TerminalPage() {
               advance so a long install does not stop to ask you.
             </li>
             <li>
-              <span className="font-mono text-accent">&amp;&amp;</span> runs the next command only if
-              the first one succeeded.
+              <span className="font-mono text-accent">&amp;&amp;</span> runs the next command only
+              if the first one succeeded.
             </li>
             <li>
               <span className="font-mono text-accent">~</span> is shorthand for your home folder.
             </li>
           </ul>
-        </div>
+        </Card>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, NavLink } from "react-router-dom";
 
 const links = [
   { to: "/", label: "Home" },
@@ -9,11 +9,15 @@ const links = [
   { to: "/glossary", label: "Glossary" },
 ] as const;
 
+const navLinkClass = ({ isActive }: { isActive: boolean }) =>
+  "shrink-0 whitespace-nowrap rounded-md px-3 py-2 font-mono text-xs transition-colors hover:text-foreground " +
+  (isActive ? "text-primary" : "text-muted-foreground");
+
 export function SiteNav() {
   return (
     <div className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
-      <div className="mx-auto grid max-w-5xl grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 py-3">
-        <Link to="/" className="flex min-w-0 items-center gap-2">
+      <div className="mx-auto flex max-w-5xl flex-col gap-1 px-4 py-2.5 sm:grid sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-3 sm:py-3">
+        <Link to="/" className="flex min-w-0 items-center gap-2" aria-label="Android Web Dev home">
           <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-primary font-mono text-sm font-bold text-primary-foreground">
             &gt;_
           </span>
@@ -21,16 +25,14 @@ export function SiteNav() {
             Android Web Dev
           </span>
         </Link>
-        <nav className="-mr-1 flex shrink-0 items-center gap-1 overflow-x-auto">
+        <nav
+          aria-label="Primary"
+          className="-mx-1 flex w-full items-center gap-1 overflow-x-auto px-1 py-0.5 sm:mx-0 sm:w-auto sm:px-0"
+        >
           {links.slice(1).map((l) => (
-            <Link
-              key={l.to}
-              to={l.to}
-              className="whitespace-nowrap rounded-md px-2.5 py-1.5 font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
-              activeProps={{ className: "text-primary" }}
-            >
+            <NavLink key={l.to} to={l.to} className={navLinkClass}>
               {l.label}
-            </Link>
+            </NavLink>
           ))}
         </nav>
       </div>

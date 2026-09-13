@@ -1,28 +1,18 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { HardwareChecker } from "@/components/HardwareChecker";
+import { useDocumentMeta } from "@/hooks/use-document-meta";
 import { modules, toolPairs } from "@/lib/content";
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Android Web Development — Code on Your Phone" },
-      {
-        name: "description",
-        content:
-          "Turn an Android phone into a web development machine. Check hardware compatibility, then set up Termux, Node.js, Acode, Git, React and Next.js step by step.",
-      },
-      { property: "og:title", content: "Android Web Development — Code on Your Phone" },
-      {
-        property: "og:description",
-        content:
-          "An interactive, mobile-first guide to building real web apps using nothing but an Android phone.",
-      },
-    ],
-  }),
-  component: Index,
-});
+export default function HomePage() {
+  useDocumentMeta({
+    title: "Android Web Development — Code on Your Phone",
+    description:
+      "Turn an Android phone into a web development machine. Check hardware compatibility, then set up Termux, Node.js, Acode, Git, React and Next.js step by step.",
+    ogTitle: "Android Web Development — Code on Your Phone",
+    ogDescription:
+      "An interactive, mobile-first guide to building real web apps using nothing but an Android phone.",
+  });
 
-function Index() {
   return (
     <div>
       <section className="relative overflow-hidden border-b border-border px-4 py-14 sm:px-6 sm:py-20">
@@ -32,13 +22,12 @@ function Index() {
             No laptop required
           </p>
           <h1 className="mt-5 font-display text-4xl leading-[1.1] text-foreground sm:text-5xl">
-            Your phone is already a
-            <span className="text-primary"> web development machine.</span>
+            Your phone is already a<span className="text-primary"> web development machine.</span>
           </h1>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
-            A Linux terminal, a code editor, Node.js, Git, React and Next.js all run on Android. This
-            guide takes you from a freshly unlocked phone to a running app, one copyable command at a
-            time.
+            A Linux terminal, a code editor, Node.js, Git, React and Next.js all run on Android.
+            This guide takes you from a freshly unlocked phone to a running app, one copyable
+            command at a time.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <Link
@@ -69,8 +58,7 @@ function Index() {
             {modules.map((m, i) => (
               <Link
                 key={m.slug}
-                to="/setup"
-                hash={m.slug}
+                to={{ pathname: "/setup", hash: m.slug }}
                 className="group rounded-2xl border border-border bg-card p-4 transition-colors hover:border-primary"
               >
                 <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-2">
@@ -102,8 +90,16 @@ function Index() {
 
         <section className="grid gap-3 sm:grid-cols-3">
           {[
-            { to: "/terminal", title: "Terminal simulator", copy: "Practice commands with nothing at stake." },
-            { to: "/troubleshooting", title: "Troubleshooting", copy: "Searchable fixes for real Android errors." },
+            {
+              to: "/terminal",
+              title: "Terminal simulator",
+              copy: "Practice commands with nothing at stake.",
+            },
+            {
+              to: "/troubleshooting",
+              title: "Troubleshooting",
+              copy: "Searchable fixes for real Android errors.",
+            },
             { to: "/glossary", title: "Glossary", copy: "Every term explained in plain language." },
           ].map((c) => (
             <Link

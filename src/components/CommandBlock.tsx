@@ -1,14 +1,23 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Check, Copy } from "lucide-react";
 
 export function CommandBlock({ commands }: { commands: string[] }) {
   const [copied, setCopied] = useState<number | null>(null);
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (timer.current) clearTimeout(timer.current);
+    };
+  }, []);
 
   const copy = async (cmd: string, i: number) => {
     try {
+      if (!navigator.clipboard?.writeText) return;
       await navigator.clipboard.writeText(cmd);
       setCopied(i);
-      setTimeout(() => setCopied(null), 1600);
+      if (timer.current) clearTimeout(timer.current);
+      timer.current = setTimeout(() => setCopied(null), 1600);
     } catch {
       /* clipboard blocked */
     }
@@ -18,7 +27,7 @@ export function CommandBlock({ commands }: { commands: string[] }) {
     <div className="overflow-hidden rounded-xl border border-border bg-terminal">
       {commands.map((cmd, i) => (
         <div
-          key={cmd}
+          key={`${i}-${cmd.slice(0, 16)}`}
           className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-2 border-b border-border/60 px-3 py-2.5 last:border-b-0"
         >
           <code className="min-w-0 overflow-x-auto whitespace-pre font-mono text-[13px] leading-relaxed text-terminal-foreground">

@@ -1,25 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/PageHeader";
+import { useDocumentMeta } from "@/hooks/use-document-meta";
 import { toolPairs } from "@/lib/content";
-
-export const Route = createFileRoute("/tools")({
-  head: () => ({
-    meta: [
-      { title: "PC vs Android Dev Tools — Android Web Development" },
-      {
-        name: "description",
-        content:
-          "Side-by-side comparison of desktop web development tools and their Android equivalents: Termux, Acode, Git, devtools, databases and deploys.",
-      },
-      { property: "og:title", content: "PC vs Android Dev Tools" },
-      {
-        property: "og:description",
-        content: "What transfers from a laptop to a phone, what is close, and what needs a workaround.",
-      },
-    ],
-  }),
-  component: ToolsPage,
-});
 
 const gapLabel = {
   same: { text: "Same thing", cls: "border-success text-success" },
@@ -27,7 +8,16 @@ const gapLabel = {
   workaround: { text: "Needs a workaround", cls: "border-destructive text-destructive" },
 };
 
-function ToolsPage() {
+export default function ToolsPage() {
+  useDocumentMeta({
+    title: "PC vs Android Dev Tools — Android Web Development",
+    description:
+      "Side-by-side comparison of desktop web development tools and their Android equivalents: Termux, Acode, Git, devtools, databases and deploys.",
+    ogTitle: "PC vs Android Dev Tools",
+    ogDescription:
+      "What transfers from a laptop to a phone, what is close, and what needs a workaround.",
+  });
+
   return (
     <div>
       <PageHeader
@@ -43,7 +33,9 @@ function ToolsPage() {
               <article key={t.task} className="rounded-2xl border border-border bg-card p-4">
                 <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3">
                   <h2 className="truncate font-display text-lg text-foreground">{t.task}</h2>
-                  <span className={`shrink-0 rounded-full border px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider ${g.cls}`}>
+                  <span
+                    className={`shrink-0 rounded-full border px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider ${g.cls}`}
+                  >
                     {g.text}
                   </span>
                 </div>

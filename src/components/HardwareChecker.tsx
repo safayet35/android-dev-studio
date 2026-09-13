@@ -1,4 +1,5 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
+import { FilterChip } from "./FilterChip";
 
 type Answers = {
   ram: number;
@@ -56,10 +57,25 @@ function verdict(a: Answers) {
   }
 
   if (score >= 7)
-    return { level: "Ready to build", tone: "success" as const, notes, blurb: "Your phone can run the whole stack in this guide, including Next.js." };
+    return {
+      level: "Ready to build",
+      tone: "success" as const,
+      notes,
+      blurb: "Your phone can run the whole stack in this guide, including Next.js.",
+    };
   if (score >= 4)
-    return { level: "Good with care", tone: "warning" as const, notes, blurb: "Everything here works, as long as you follow the memory and storage tips." };
-  return { level: "Limited", tone: "destructive" as const, notes, blurb: "Start with Termux, Git, and a small Vite project before attempting heavier frameworks." };
+    return {
+      level: "Good with care",
+      tone: "warning" as const,
+      notes,
+      blurb: "Everything here works, as long as you follow the memory and storage tips.",
+    };
+  return {
+    level: "Limited",
+    tone: "destructive" as const,
+    notes,
+    blurb: "Start with Termux, Git, and a small Vite project before attempting heavier frameworks.",
+  };
 }
 
 function Choice<T extends string | number>({
@@ -82,20 +98,9 @@ function Choice<T extends string | number>({
       </legend>
       <div className="mt-2 flex flex-wrap gap-2">
         {options.map((o) => (
-          <button
-            key={String(o)}
-            type="button"
-            onClick={() => onChange(o)}
-            aria-pressed={o === value}
-            className={
-              "rounded-lg border px-3 py-1.5 font-mono text-xs transition-colors " +
-              (o === value
-                ? "border-primary bg-primary text-primary-foreground"
-                : "border-border bg-secondary text-muted-foreground hover:text-foreground")
-            }
-          >
+          <FilterChip key={String(o)} active={o === value} onClick={() => onChange(o)}>
             {format(o)}
-          </button>
+          </FilterChip>
         ))}
       </div>
     </fieldset>
@@ -110,6 +115,7 @@ export function HardwareChecker() {
     chip: "arm64",
   });
   const [checked, setChecked] = useState(false);
+  const resultRef = useRef<HTMLDivElement>(null);
   const result = useMemo(() => verdict(answers), [answers]);
 
   const toneClass =
@@ -120,7 +126,10 @@ export function HardwareChecker() {
         : "border-destructive text-destructive";
 
   return (
-    <section id="checker" className="rounded-2xl border border-border bg-card p-4 sm:p-6">
+    <section
+      id="checker"
+      className="scroll-mt-24 rounded-2xl border border-border bg-card p-4 sm:p-6"
+    >
       <h2 className="font-display text-xl text-foreground sm:text-2xl">
         Will your phone handle it?
       </h2>
@@ -161,7 +170,10 @@ export function HardwareChecker() {
 
       <button
         type="button"
-        onClick={() => setChecked(true)}
+        onClick={() => {
+          setChecked(true);
+          requestAnimationFrame(() => resultRef.current?.focus());
+        }}
         className="mt-6 w-full rounded-xl bg-primary px-4 py-3 font-mono text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
       >
         Check compatibility
@@ -169,8 +181,10 @@ export function HardwareChecker() {
 
       {checked && (
         <div
+          ref={resultRef}
+          tabIndex={-1}
           role="status"
-          className={`mt-5 rounded-xl border bg-background/60 p-4 ${toneClass}`}
+          className={`mt-5 rounded-xl border bg-background/60 p-4 outline-none ${toneClass}`}
         >
           <p className="font-mono text-xs uppercase tracking-widest">Result</p>
           <p className="mt-1 font-display text-xl">{result.level}</p>

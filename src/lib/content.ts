@@ -14,6 +14,49 @@ export type Module = {
   steps: Step[];
 };
 
+export type AcodeExtension = {
+  slug: string;
+  name: string;
+  icon: string;
+  description: string;
+};
+
+export const acodeExtensions: AcodeExtension[] = [
+  {
+    slug: "prettier",
+    name: "Prettier",
+    icon: "/extensions/acode.plugin.prettier.png",
+    description: "Prettier is an opinionated code formatter that enforces a consistent style across your codebase.",
+  },
+  {
+    slug: "theme",
+    name: "Chai Theme",
+    icon: "/extensions/acode.plugin.chaitheme.png",
+    description: "Chai Theme, a stylish and customizable theme extension that brings a fresh, warm, and smooth look to your browsing experience.",
+  },
+  {
+    slug: "emmet",
+    name: "Emmet",
+    icon: "/extensions/acode.plugin.emmet.png",
+    description:
+      "Expands short snippets into full HTML and CSS, saving hundreds of phone-keyboard taps.",
+  },
+    
+  {
+    slug: "extra-syntax-highlights-2.0",
+    name: "Extra Syntax Highlights 2.0",
+    icon: "/extensions/acode.plugin.extra_syntax_highlights.png",
+    description: "Colorize your indent lines . Works in all modes and all themes",
+  },
+  {
+    slug: "react/redux-snippets",
+    name: "Acode ES7+ React/Redux snippets",
+    icon: "/extensions/acode.react.snippets.png",
+    description: "This plugin provides a collection of ES7+ React/Redux snippets to enhance your development workflow on mobile. ",
+  }
+
+];
+
 export const modules: Module[] = [
   {
     slug: "termux",
@@ -49,8 +92,8 @@ export const modules: Module[] = [
   },
   {
     slug: "node",
-    title: "Node.js & package managers",
-    tagline: "The JavaScript runtime, npm, and a faster alternative.",
+    title: "Node.js & npm",
+    tagline: "The JavaScript runtime and its default package manager.",
     minutes: 8,
     steps: [
       {
@@ -61,9 +104,9 @@ export const modules: Module[] = [
       },
       {
         id: "node-pnpm",
-        title: "Add a faster package manager",
-        body: "On a phone, install speed matters. pnpm reuses a global store instead of copying thousands of files per project.",
-        commands: ["npm install -g pnpm", "pnpm -v"],
+        title: "Speed up npm installs",
+        body: "On a phone, install speed matters. Skip audit and funding checks to make npm installs noticeably faster.",
+        commands: ["npm -v", "npm config get cache"],
       },
       {
         id: "node-cache",
@@ -117,10 +160,7 @@ export const modules: Module[] = [
         id: "git-key",
         title: "Create an SSH key",
         body: "Typing a password on a phone keyboard for every push is misery. Use a key instead.",
-        commands: [
-          'ssh-keygen -t ed25519 -C "phone"',
-          "cat ~/.ssh/id_ed25519.pub",
-        ],
+        commands: ['ssh-keygen -t ed25519 -C "phone"', "cat ~/.ssh/id_ed25519.pub"],
         note: "Copy the printed key and paste it into GitHub under Settings, SSH and GPG keys.",
       },
       {
@@ -141,19 +181,19 @@ export const modules: Module[] = [
         id: "react-create",
         title: "Create the project",
         body: "Vite's React template is small enough to install comfortably on mobile hardware.",
-        commands: ["cd ~/projects", "pnpm create vite my-app --template react-ts"],
+        commands: ["cd ~/projects", "npm create vite@latest my-app --template react-ts"],
       },
       {
         id: "react-install",
         title: "Install dependencies",
         body: "Expect one to three minutes on a mid-range phone.",
-        commands: ["cd my-app && pnpm install"],
+        commands: ["cd my-app && npm install"],
       },
       {
         id: "react-run",
         title: "Run the dev server",
         body: "Start the server, then open the printed address in your phone's browser.",
-        commands: ["pnpm dev --host 127.0.0.1 --port 5173"],
+        commands: ["npm run dev -- --host 127.0.0.1 --port 5173"],
         note: "Keep Termux in the foreground or enable its wake lock, or Android will suspend the server.",
       },
     ],
@@ -168,7 +208,7 @@ export const modules: Module[] = [
         id: "next-create",
         title: "Scaffold the app",
         body: "Answer the prompts; choosing TypeScript and the App Router is a good default.",
-        commands: ["cd ~/projects", "pnpm create next-app@latest my-next-app"],
+        commands: ["cd ~/projects", "npm create next-app@latest my-next-app"],
       },
       {
         id: "next-memory",
@@ -181,7 +221,7 @@ export const modules: Module[] = [
         id: "next-run",
         title: "Develop and build",
         body: "Dev mode is comfortable; full production builds are the heaviest thing you will run.",
-        commands: ["pnpm dev", "pnpm build"],
+        commands: ["npm run dev", "npm run build"],
       },
     ],
   },
@@ -210,7 +250,8 @@ export const toolPairs: ToolPair[] = [
     pc: "VS Code",
     android: "Acode",
     gap: "close",
-    detail: "Syntax highlighting, plugins, multi-file editing. No integrated debugger or extension marketplace of the same depth.",
+    detail:
+      "Syntax highlighting, plugins, multi-file editing. No integrated debugger or extension marketplace of the same depth.",
   },
   {
     task: "Runtime",
@@ -231,21 +272,24 @@ export const toolPairs: ToolPair[] = [
     pc: "Chrome DevTools",
     android: "Eruda / remote debug",
     gap: "workaround",
-    detail: "Inject Eruda for an on-device console, or use USB remote debugging from another machine when you need the real panel.",
+    detail:
+      "Inject Eruda for an on-device console, or use USB remote debugging from another machine when you need the real panel.",
   },
   {
     task: "Databases",
     pc: "Postgres locally",
     android: "SQLite or hosted",
     gap: "workaround",
-    detail: "Postgres can be compiled in Termux but is heavy. A hosted database or SQLite is the practical choice.",
+    detail:
+      "Postgres can be compiled in Termux but is heavy. A hosted database or SQLite is the practical choice.",
   },
   {
     task: "Containers",
     pc: "Docker",
     android: "proot-distro",
     gap: "workaround",
-    detail: "No kernel namespaces without root. proot-distro gives you a Debian or Ubuntu rootfs instead.",
+    detail:
+      "No kernel namespaces without root. proot-distro gives you a Debian or Ubuntu rootfs instead.",
   },
   {
     task: "Deploys",
@@ -309,7 +353,7 @@ export const issues: Issue[] = [
     title: "The browser refuses the connection to localhost",
     symptoms: "Connection refused at localhost:5173.",
     fix: "Bind the dev server explicitly to the loopback address and use the same port in the browser.",
-    commands: ["pnpm dev --host 127.0.0.1 --port 5173"],
+    commands: ["npm run dev -- --host 127.0.0.1 --port 5173"],
     tags: ["vite", "network"],
   },
   {
@@ -331,32 +375,115 @@ export const issues: Issue[] = [
   {
     id: "slow-install",
     title: "Installs take many minutes",
-    symptoms: "pnpm or npm install crawls on every project.",
-    fix: "Use pnpm's shared store and avoid reinstalling from scratch; prune old caches occasionally.",
-    commands: ["pnpm store prune"],
+    symptoms: "npm install crawls on every project.",
+    fix: "Reuse npm's cache and skip audit and funding checks on a phone; verify the cache occasionally instead of reinstalling from scratch.",
+    commands: ["npm cache verify"],
     tags: ["npm", "performance"],
   },
 ];
 
 export const glossary: { term: string; definition: string; category: string }[] = [
-  { term: "Termux", definition: "An Android app that gives you a Linux command line and package manager without rooting the phone.", category: "Tools" },
-  { term: "Package manager", definition: "A program that downloads, installs, and updates software for you. pkg for Termux, npm or pnpm for JavaScript.", category: "Core" },
-  { term: "Node.js", definition: "A runtime that lets JavaScript run outside a browser, which is how build tools and servers written in JavaScript work.", category: "Core" },
-  { term: "npm", definition: "The default JavaScript package manager and the registry it downloads from.", category: "Core" },
-  { term: "pnpm", definition: "An alternative package manager that saves space and time by linking to one shared copy of each package.", category: "Core" },
-  { term: "Repository", definition: "A folder tracked by Git, with a full history of every change.", category: "Git" },
-  { term: "Commit", definition: "A saved snapshot of your changes with a message describing them.", category: "Git" },
-  { term: "Push", definition: "Sending your local commits up to a remote host like GitHub.", category: "Git" },
-  { term: "SSH key", definition: "A pair of files that proves who you are to a server, replacing a typed password.", category: "Git" },
-  { term: "Dev server", definition: "A local program that serves your site while you work and reloads it when files change.", category: "Web" },
-  { term: "Localhost", definition: "A name for the device you are on. Your phone talking to itself.", category: "Web" },
-  { term: "Port", definition: "A numbered channel on a device. 5173 and 3000 are common for dev servers.", category: "Web" },
-  { term: "Vite", definition: "A fast build tool and dev server, commonly used to start React projects.", category: "Web" },
-  { term: "React", definition: "A library for building user interfaces out of reusable components.", category: "Web" },
-  { term: "Next.js", definition: "A framework built on React that adds routing, server rendering, and backend endpoints.", category: "Web" },
-  { term: "Build", definition: "The step that turns your source files into optimised files a server can ship.", category: "Web" },
-  { term: "node_modules", definition: "The folder holding every dependency your project downloaded. Large, and never edited by hand.", category: "Core" },
-  { term: "Wake lock", definition: "A request that stops Android from suspending an app, needed to keep a dev server alive.", category: "Android" },
-  { term: "proot-distro", definition: "A Termux add-on that runs a full Linux distribution inside Termux without root.", category: "Android" },
-  { term: "Shared storage", definition: "The part of your phone's storage that file managers can see. Slower and less permissive than the Termux home.", category: "Android" },
+  {
+    term: "Termux",
+    definition:
+      "An Android app that gives you a Linux command line and package manager without rooting the phone.",
+    category: "Tools",
+  },
+  {
+    term: "Package manager",
+    definition:
+      "A program that downloads, installs, and updates software for you. pkg for Termux, npm for JavaScript.",
+    category: "Core",
+  },
+  {
+    term: "Node.js",
+    definition:
+      "A runtime that lets JavaScript run outside a browser, which is how build tools and servers written in JavaScript work.",
+    category: "Core",
+  },
+  {
+    term: "npm",
+    definition: "The default JavaScript package manager and the registry it downloads from.",
+    category: "Core",
+  },
+  {
+    term: "Repository",
+    definition: "A folder tracked by Git, with a full history of every change.",
+    category: "Git",
+  },
+  {
+    term: "Commit",
+    definition: "A saved snapshot of your changes with a message describing them.",
+    category: "Git",
+  },
+  {
+    term: "Push",
+    definition: "Sending your local commits up to a remote host like GitHub.",
+    category: "Git",
+  },
+  {
+    term: "SSH key",
+    definition: "A pair of files that proves who you are to a server, replacing a typed password.",
+    category: "Git",
+  },
+  {
+    term: "Dev server",
+    definition:
+      "A local program that serves your site while you work and reloads it when files change.",
+    category: "Web",
+  },
+  {
+    term: "Localhost",
+    definition: "A name for the device you are on. Your phone talking to itself.",
+    category: "Web",
+  },
+  {
+    term: "Port",
+    definition: "A numbered channel on a device. 5173 and 3000 are common for dev servers.",
+    category: "Web",
+  },
+  {
+    term: "Vite",
+    definition: "A fast build tool and dev server, commonly used to start React projects.",
+    category: "Web",
+  },
+  {
+    term: "React",
+    definition: "A library for building user interfaces out of reusable components.",
+    category: "Web",
+  },
+  {
+    term: "Next.js",
+    definition:
+      "A framework built on React that adds routing, server rendering, and backend endpoints.",
+    category: "Web",
+  },
+  {
+    term: "Build",
+    definition: "The step that turns your source files into optimised files a server can ship.",
+    category: "Web",
+  },
+  {
+    term: "node_modules",
+    definition:
+      "The folder holding every dependency your project downloaded. Large, and never edited by hand.",
+    category: "Core",
+  },
+  {
+    term: "Wake lock",
+    definition:
+      "A request that stops Android from suspending an app, needed to keep a dev server alive.",
+    category: "Android",
+  },
+  {
+    term: "proot-distro",
+    definition: "A Termux add-on that runs a full Linux distribution inside Termux without root.",
+    category: "Android",
+  },
+  {
+    term: "Shared storage",
+    definition:
+      "The part of your phone's storage that file managers can see. Slower and less permissive than the Termux home.",
+    category: "Android",
+  },
 ];

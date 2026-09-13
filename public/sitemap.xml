@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Prefix each <loc> with the production origin on deploy. Paths mirror src/routes/*.tsx. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>/</loc></url>
+  <url><loc>/setup</loc></url>
+  <url><loc>/tools</loc></url>
+  <url><loc>/terminal</loc></url>
+  <url><loc>/troubleshooting</loc></url>
+  <url><loc>/glossary</loc></url>
+</urlset>

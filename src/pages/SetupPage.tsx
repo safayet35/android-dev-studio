@@ -1,30 +1,21 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { Check } from "lucide-react";
 import { PageHeader } from "@/components/PageHeader";
 import { CommandBlock } from "@/components/CommandBlock";
-import { modules, allSteps } from "@/lib/content";
+import { ExtensionCard } from "@/components/ExtensionCard";
+import { useDocumentMeta } from "@/hooks/use-document-meta";
+import { modules, acodeExtensions, allSteps } from "@/lib/content";
 import { useProgress } from "@/hooks/use-progress";
 
-export const Route = createFileRoute("/setup")({
-  head: () => ({
-    meta: [
-      { title: "Setup Guide: Termux to Next.js — Android Web Development" },
-      {
-        name: "description",
-        content:
-          "Step-by-step Android setup for Termux, Node.js, Acode, Git, React with Vite and Next.js, with copyable commands and a saved progress checklist.",
-      },
-      { property: "og:title", content: "Android Setup Guide: Termux to Next.js" },
-      {
-        property: "og:description",
-        content: "Six modules of copy-and-run commands that turn a phone into a web development machine.",
-      },
-    ],
-  }),
-  component: SetupPage,
-});
+export default function SetupPage() {
+  useDocumentMeta({
+    title: "Setup Guide: Termux to Next.js — Android Web Development",
+    description:
+      "Step-by-step Android setup for Termux, Node.js, Acode, Git, React with Vite and Next.js, with copyable commands and a saved progress checklist.",
+    ogTitle: "Android Setup Guide: Termux to Next.js",
+    ogDescription:
+      "Six modules of copy-and-run commands that turn a phone into a web development machine.",
+  });
 
-function SetupPage() {
   const { isDone, toggle, reset, done, loaded } = useProgress();
   const total = allSteps.length;
   const pct = loaded ? Math.round((done.length / total) * 100) : 0;
@@ -38,7 +29,7 @@ function SetupPage() {
       />
 
       <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
-        <div className="sticky top-[57px] z-40 rounded-2xl border border-border bg-card/95 p-4 backdrop-blur">
+        <div className="sticky top-[var(--nav-h)] z-40 rounded-2xl border border-border bg-card/95 p-4 backdrop-blur">
           <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
             <div className="min-w-0">
               <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
@@ -131,6 +122,13 @@ function SetupPage() {
                               <div className="mt-3">
                                 <CommandBlock commands={s.commands} />
                               </div>
+                            )}
+                            {s.id === "acode-plugins" && (
+                              <ul className="mt-3 grid gap-3 sm:grid-cols-2">
+                                {acodeExtensions.map((e) => (
+                                  <ExtensionCard key={e.slug} extension={e} />
+                                ))}
+                              </ul>
                             )}
                             {s.note && (
                               <p className="mt-3 rounded-lg border-l-2 border-accent bg-secondary/60 px-3 py-2 text-xs text-muted-foreground">

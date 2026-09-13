@@ -40,6 +40,10 @@
 
 :root {
   --radius: 0.75rem;
+  --nav-h: 104px;
+  @media (min-width: 640px) {
+    --nav-h: 57px;
+  }
   --background: oklch(0.19 0.019 260);
   --foreground: oklch(0.95 0.008 250);
   --card: oklch(0.235 0.021 260);
