@@ -6,6 +6,16 @@ import { useDocumentMeta } from "@/hooks/use-document-meta";
 import { modules, acodeExtensions, allSteps } from "@/lib/content";
 import { useProgress } from "@/hooks/use-progress";
 
+const materialFilesSteps = [
+  "Install Material Files from the Play Store",
+  "Open the app and tap the \u2630 menu",
+  "Tap Add Storage +",
+  "Select External Storage",
+  "Navigate to and select the Termux folder",
+  "Tap Use This Folder and grant permission",
+  "Browse and manage your project files",
+];
+
 export default function SetupPage() {
   useDocumentMeta({
     title: "Setup Guide: Termux to Next.js — Android Web Development",
@@ -129,6 +139,37 @@ export default function SetupPage() {
                                   <ExtensionCard key={e.slug} extension={e} />
                                 ))}
                               </ul>
+                            )}
+                            {s.id === "material-files" && (
+                              <div className="mt-4 rounded-xl border border-border bg-secondary/40 p-4 sm:p-5">
+                                <p className="mb-4 font-mono text-xs uppercase tracking-widest text-accent">
+                                  Setup flow
+                                </p>
+                                <ol className="space-y-2">
+                                  {materialFilesSteps.map((step, i) => (
+                                    <li key={i} className="flex items-start gap-3">
+                                      <span className="mt-px grid h-7 w-7 shrink-0 place-items-center rounded-full border border-border bg-card font-mono text-xs text-accent">
+                                        {i + 1}
+                                      </span>
+                                      <span className="min-w-0 pt-1 text-sm leading-snug text-muted-foreground">
+                                        {step}
+                                      </span>
+                                    </li>
+                                  ))}
+                                </ol>
+                                <p className="mt-5 rounded-lg border-l-2 border-accent bg-secondary/60 px-3 py-2.5 text-xs leading-relaxed text-muted-foreground sm:text-sm">
+                                  Termux is primarily a terminal environment, so managing files
+                                  through a graphical file manager can be much more convenient when
+                                  working with images, assets, downloads, or project files. You can
+                                  continue doing everything through Termux commands if you prefer.
+                                </p>
+                                <p className="mt-3 rounded-lg border-l-2 border-warning bg-secondary/60 px-3 py-2.5 text-xs leading-relaxed text-muted-foreground sm:text-sm">
+                                  Only grant folder access when you understand what you&apos;re
+                                  sharing with the file manager. Avoid deleting files or folders you
+                                  don&apos;t recognize, especially inside your development
+                                  environment.
+                                </p>
+                              </div>
                             )}
                             {s.note && (
                               <p className="mt-3 rounded-lg border-l-2 border-accent bg-secondary/60 px-3 py-2 text-xs text-muted-foreground">

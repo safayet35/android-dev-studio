@@ -88,6 +88,12 @@ export const modules: Module[] = [
         body: "A compiler toolchain and a few CLI basics make later installs far less painful.",
         commands: ["pkg install -y git curl wget openssh nano"],
       },
+      {
+        id: "material-files",
+        title: "Manage Termux files with Material Files",
+        body: "Material Files is a file manager that can access your Termux storage from a graphical Android interface. It makes browsing, adding, moving, or deleting project files much more convenient than using terminal commands alone.",
+        note: "Recommended Android Tool. Material Files is optional — you can continue doing everything through Termux commands if you prefer.",
+      },
     ],
   },
   {
