@@ -31,7 +31,7 @@ Static educational site: turn an Android phone into a web dev machine (Termux, A
 - `src/App.tsx` — app shell (`SiteNav`, `Routes`, `SiteFooter`, `ScrollToTop`, 404 `*` route, error boundary).
 - `src/pages/HomePage.tsx|SetupPage.tsx|ToolsPage.tsx|TerminalPage.tsx|TroubleshootingPage.tsx|GlossaryPage.tsx` — the only 6 pages. Plain components using `useDocumentMeta`.
 - `src/components/PageHeader.tsx|SiteNav.tsx|CommandBlock.tsx|HardwareChecker.tsx|TerminalSim.tsx|FilterChip.tsx|Card.tsx|SearchInput.tsx|ExtensionCard.tsx` — custom components. Reuse these, don't duplicate.
-- `src/components/ui/*` — 46 shadcn new-york files, ~40 unused. Do not add new ones without removing unused.
+- `src/components/` is flat (9 files, no `ui/`). Do not add shadcn/Radix wrappers; use the existing primitives.
 - `src/lib/content.ts` — ALL page data: `modules` (6, 20 steps), `toolPairs` (8), `issues` (9), `glossary` (20). Edit content here.
 - `src/hooks/use-progress.ts` — localStorage key `awd-progress-v1`. Step `id`s are stable API; never rename.
 - `src/hooks/use-document-meta.ts` — per-page `document.title` + description/og tags (client-side; no SSR).
@@ -49,4 +49,4 @@ Static educational site: turn an Android phone into a web dev machine (Termux, A
 7. Content edits: keep types `Step/Module/ToolPair/Issue` in `content.ts`. Commands are `string[]` rendered by `CommandBlock`.
 8. A11y: keep skip-link, `aria-pressed/expanded/label`, `role=log/progressbar/status`, `fieldset/legend` patterns on interactive controls.
 9. SEO is client-side (no SSR): site meta lives in `index.html`; every page must call `useDocumentMeta` (see `HomePage.tsx`).
-10. Verify with `npm run lint` and `npm run typecheck` after changes. No dead deps: `recharts`, `react-day-picker`, `embla-carousel`, `vaul`, `cmdk`, `zod`, `react-hook-form` are installed but unused — do not import them for new features.
+10. Verify with `npm run lint` and `npm run typecheck` after changes. Dependencies are minimal (`react`, `react-dom`, `react-router-dom`, `lucide-react`, Tailwind, Vite) — do not add UI kit, form, chart, or date libraries for new features.

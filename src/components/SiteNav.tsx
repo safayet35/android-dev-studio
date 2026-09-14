@@ -27,7 +27,7 @@ export function SiteNav() {
         </Link>
         <nav
           aria-label="Primary"
-          className="-mx-1 flex w-full items-center gap-1 overflow-x-auto px-1 py-0.5 sm:mx-0 sm:w-auto sm:px-0"
+          className="-mx-1 flex w-full items-center gap-1 overflow-x-auto px-1 py-0.5 [-ms-overflow-style:none] [scrollbar-width:none] sm:mx-0 sm:w-auto sm:px-0 [&::-webkit-scrollbar]:hidden"
         >
           {links.slice(1).map((l) => (
             <NavLink key={l.to} to={l.to} className={navLinkClass}>
@@ -45,6 +45,17 @@ export function SiteFooter() {
     <footer className="border-t border-border px-4 py-8 text-center">
       <p className="font-mono text-xs text-muted-foreground">
         Built for people whose only computer fits in a pocket.
+      </p>
+      <p className="mt-3 font-mono text-xs text-muted-foreground">
+        Built by Safayet Rahman{" "}
+        <a
+          href="https://github.com/safayet35"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1 underline decoration-border underline-offset-4 transition-colors hover:text-foreground hover:decoration-foreground/30"
+        >
+          Follow my work on GitHub <span aria-hidden>→</span>
+        </a>
       </p>
     </footer>
   );

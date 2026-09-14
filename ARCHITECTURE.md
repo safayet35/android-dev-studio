@@ -26,7 +26,7 @@ Plain Vite SPA with React Router. No SSR, no data fetching, no backend. Flow: `i
 - `HardwareChecker` — `Answers{ram,storage,android,chip}` + `verdict()` score→`Ready/Good/Limited` + `FilterChip` buttons. Result `role=status`, focused on check, `scroll-mt-24` anchor.
 - `TerminalSim` — `respond(cmd, files):Line[]` string matcher + `lines/value` state, `role=log aria-live=polite` output, form submit.
 - `FilterChip/SearchInput/Card` — shared primitives in `src/components/` (not `ui/`).
-- `ui/*` — 46 shadcn new-york components (Radix-based). Effectively dead code; pages use inline Tailwind instead.
+- No `ui/` folder — shadcn/Radix set was deleted (zero live importers). Shared primitives live directly in `src/components/`.
 
 ## 4. State & data
 
@@ -34,7 +34,7 @@ Plain Vite SPA with React Router. No SSR, no data fetching, no backend. Flow: `i
 - `hooks/use-progress.ts`: `done:string[]` + `loaded` + `toggle/reset/isDone`, localStorage `awd-progress-v1`, functional updates, shape-validated parse.
 - `hooks/use-document-meta.ts`: sets `document.title` + description/`og:title`/`og:description` per page, restores on unmount. No SSR — SEO is client-side.
 - `hooks/use-mobile.tsx` (`useIsMobile`) — exists, unused.
-- `lib/utils.ts`: `cn()` (clsx+tailwind-merge). `lib/lovable-error-reporting.ts`: `reportLovableError` used by the error boundary.
+- `lib/lovable-error-reporting.ts`: `reportLovableError` used by the error boundary.
 
 ## 5. Styling / layout
 

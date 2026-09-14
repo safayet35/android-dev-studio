@@ -29,7 +29,7 @@ export default function SetupPage() {
       />
 
       <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
-        <div className="sticky top-[var(--nav-h)] z-40 rounded-2xl border border-border bg-card/95 p-4 backdrop-blur">
+        <div className="sticky top-[calc(var(--nav-h)+8px)] z-40 rounded-2xl border border-border bg-card/95 p-4 backdrop-blur">
           <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
             <div className="min-w-0">
               <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
@@ -42,7 +42,7 @@ export default function SetupPage() {
             <button
               type="button"
               onClick={reset}
-              className="shrink-0 rounded-lg border border-border px-3 py-1.5 font-mono text-xs text-muted-foreground hover:text-foreground"
+              className="shrink-0 rounded-lg border border-border px-3 py-2 font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
             >
               Reset
             </button>

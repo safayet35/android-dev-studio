@@ -55,7 +55,9 @@ export default function GlossaryPage() {
           {results.map((g) => (
             <div key={g.term} className="rounded-2xl border border-border bg-card p-4">
               <dt className="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-2">
-                <span className="truncate font-display text-base text-foreground">{g.term}</span>
+                <span className="min-w-0 font-display text-base break-words text-foreground">
+                  {g.term}
+                </span>
                 <span className="shrink-0 font-mono text-[10px] uppercase tracking-wider text-accent">
                   {g.category}
                 </span>

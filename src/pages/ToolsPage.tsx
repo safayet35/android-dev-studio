@@ -32,21 +32,24 @@ export default function ToolsPage() {
             return (
               <article key={t.task} className="rounded-2xl border border-border bg-card p-4">
                 <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3">
-                  <h2 className="truncate font-display text-lg text-foreground">{t.task}</h2>
+                  <h2 className="min-w-0 font-display text-lg text-foreground">{t.task}</h2>
                   <span
                     className={`shrink-0 rounded-full border px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider ${g.cls}`}
                   >
                     {g.text}
                   </span>
                 </div>
-                <div className="mt-3 grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-2">
-                  <span className="truncate rounded-lg bg-secondary px-2.5 py-1.5 font-mono text-xs text-muted-foreground">
+                <div className="mt-3 grid grid-cols-1 gap-2 min-[420px]:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] min-[420px]:items-center">
+                  <span className="rounded-lg bg-secondary px-2.5 py-1.5 font-mono text-xs break-words text-muted-foreground">
                     {t.pc}
                   </span>
-                  <span aria-hidden className="text-accent">
+                  <span
+                    aria-hidden
+                    className="rotate-90 justify-self-center text-accent min-[420px]:rotate-0"
+                  >
                     →
                   </span>
-                  <span className="truncate rounded-lg bg-primary/15 px-2.5 py-1.5 font-mono text-xs text-primary">
+                  <span className="rounded-lg bg-primary/15 px-2.5 py-1.5 font-mono text-xs break-words text-primary">
                     {t.android}
                   </span>
                 </div>

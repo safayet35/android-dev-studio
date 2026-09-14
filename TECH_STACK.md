@@ -8,6 +8,7 @@ Based on `package.json`, `vite.config.ts`, `tsconfig.json`, `components.json`, `
 |---|---|---|
 | UI | `react@^19.2.0`, `react-dom@^19.2.0` | All pages/components, `react-jsx` |
 | Routing | `react-router-dom@^7.18.3` | `BrowserRouter`, `Routes`/`Route`, `Link`/`NavLink`, `useLocation` (`ScrollToTop`) |
+| Icons | `lucide-react` | `Check`, `Copy` only |
 | Build | `vite@8.1.5`, `@vitejs/plugin-react@^5.2.0`, `vite-tsconfig-paths@^6.0.2` | Dev/build/preview (`vite`, `vite build`, `vite preview`), `@/*` → `src/*` |
 | TS | `typescript@^5.8.3`, `target ES2022`, `moduleResolution Bundler`, `strict:true`, `@/*` → `src/*` | `tsconfig.json` |
 | Lint/format | `eslint@^9.32.0`, `typescript-eslint`, `eslint-plugin-react-hooks/refresh/prettier`, `prettier@^3.7.3` | `npm run lint`, `npm run typecheck` (`tsc --noEmit`), `npm run format` |
@@ -17,14 +18,11 @@ No SSR, no Nitro, no TanStack packages, no react-query. Output is a static SPA i
 ## 2. Styling / UI
 
 - `tailwindcss@^4.2.1`, `@tailwindcss/vite@^4.2.1`, `tw-animate-css@^1.3.4`, `clsx@^2.1.1`, `tailwind-merge@^3.5.0`, `class-variance-authority@^0.7.1`
-- shadcn `new-york` (`components.json`, `cssVariables:true`, `baseColor:slate`, `iconLibrary:lucide`), 46 files in `src/components/ui`
-- `@radix-ui/*` (~24 pkgs) — installed, not directly imported by pages
-- `lucide-react@^0.575.0` — actually used (`Check`, `Copy`)
 - Fonts (static links in `index.html`): `Space Grotesk` (display), `DM Sans` (sans), `JetBrains Mono` (mono)
 
-## 3. Installed but unused (do not use for new features)
+## 3. Removed in cleanup (were installed but unused)
 
-`recharts`, `react-day-picker@^9.14`, `embla-carousel-react@^8.6`, `vaul@^1.1.2`, `cmdk@^1.1.1`, `input-otp@^1.4.2`, `react-hook-form@^7.71`, `@hookform/resolvers`, `zod@^3.25`, `date-fns@^4.1`, `react-resizable-panels`, `sonner`. Prune before adding new deps.
+Deleted `src/components/ui/*` (46 shadcn files) and pruned ~40 packages: all `@radix-ui/*`, `@hookform/resolvers`, `class-variance-authority`, `clsx`, `cmdk`, `date-fns`, `embla-carousel-react`, `input-otp`, `react-day-picker`, `react-hook-form`, `react-resizable-panels`, `recharts`, `sonner`, `tailwind-merge`, `tw-animate-css`, `vaul`, `zod`, plus `src/lib/utils.ts` (`cn()`), `src/hooks/use-mobile.tsx`, `components.json`. CSS shrank ~76kB → ~22kB.
 
 ## 4. Scripts & targets
 

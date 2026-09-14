@@ -2,6 +2,13 @@
 
 Format: Keep a Changelog (`Added/Changed/Fixed/Removed`). Dates UTC.
 
+## [Unreleased — cleanup]
+
+### Removed
+
+- `src/components/ui/*` (46 files), `src/lib/utils.ts`, `src/hooks/use-mobile.tsx`, `components.json`; ~40 unused packages (Radix set, form/chart/date/carousel/toast libs, cva/clsx/tailwind-merge, tw-animate-css); dead CSS tokens, `server-only` eslint rule.
+- Bundle effect: CSS ~76kB → ~22kB. Verified `tsc`/build clean, all routes boot.
+
 ## [Unreleased — Acode extensions]
 
 ### Added

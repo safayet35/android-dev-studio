@@ -26,7 +26,7 @@ export function ExtensionCard({ extension }: { extension: AcodeExtension }) {
           </span>
         )}
         <div className="min-w-0">
-          <h4 className="truncate font-display text-base text-foreground">{extension.name}</h4>
+          <h4 className="font-display text-base break-words text-foreground">{extension.name}</h4>
           <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
             {extension.description}
           </p>

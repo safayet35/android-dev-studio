@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { btnPrimary, btnSecondary } from "@/components/Button";
 import { HardwareChecker } from "@/components/HardwareChecker";
 import { useDocumentMeta } from "@/hooks/use-document-meta";
 import { modules, toolPairs } from "@/lib/content";
@@ -30,16 +31,10 @@ export default function HomePage() {
             command at a time.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
-            <Link
-              to="/setup"
-              className="rounded-xl bg-primary px-5 py-3 font-mono text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
-            >
+            <Link to="/setup" className={btnPrimary}>
               Start the setup
             </Link>
-            <a
-              href="#checker"
-              className="rounded-xl border border-border px-5 py-3 font-mono text-sm text-foreground transition-colors hover:border-accent hover:text-accent"
-            >
+            <a href="#checker" className={btnSecondary}>
               Check my phone
             </a>
           </div>
@@ -80,10 +75,7 @@ export default function HomePage() {
             Closer than you would guess. {toolPairs.filter((t) => t.gap === "same").length} of{" "}
             {toolPairs.length} core tools are literally the same software.
           </p>
-          <Link
-            to="/tools"
-            className="mt-4 inline-block rounded-xl border border-border px-4 py-2.5 font-mono text-sm text-foreground transition-colors hover:border-accent hover:text-accent"
-          >
+          <Link to="/tools" className={`${btnSecondary} mt-4`}>
             See the comparison →
           </Link>
         </section>

@@ -1,4 +1,5 @@
 import { useMemo, useRef, useState } from "react";
+import { Button } from "./Button";
 import { FilterChip } from "./FilterChip";
 
 type Answers = {
@@ -168,16 +169,15 @@ export function HardwareChecker() {
         />
       </div>
 
-      <button
-        type="button"
+      <Button
         onClick={() => {
           setChecked(true);
           requestAnimationFrame(() => resultRef.current?.focus());
         }}
-        className="mt-6 w-full rounded-xl bg-primary px-4 py-3 font-mono text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+        className="mt-6 w-full"
       >
         Check compatibility
-      </button>
+      </Button>
 
       {checked && (
         <div
