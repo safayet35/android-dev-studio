@@ -277,11 +277,11 @@ export const toolPairs: ToolPair[] = [
   },
   {
     task: "Databases",
-    pc: "Postgres locally",
-    android: "SQLite or hosted",
-    gap: "workaround",
+    pc: "MongoDB + Mongoose + Compass",
+    android: "MongoDB + Mongoose + Mongodroid",
+    gap: "close",
     detail:
-      "Postgres can be compiled in Termux but is heavy. A hosted database or SQLite is the practical choice.",
+      "MongoDB and Mongoose work identically on both platforms. On PC, use MongoDB Compass to browse your data. On Android, Mongodroid lets you connect with your connection string and manage databases directly from your phone.",
   },
   {
     task: "Containers",

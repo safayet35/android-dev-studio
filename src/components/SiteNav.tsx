@@ -18,9 +18,7 @@ export function SiteNav() {
     <div className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
       <div className="mx-auto flex max-w-5xl flex-col gap-1 px-4 py-2.5 sm:grid sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-3 sm:py-3">
         <Link to="/" className="flex min-w-0 items-center gap-2" aria-label="Android Web Dev home">
-          <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-primary font-mono text-sm font-bold text-primary-foreground">
-            &gt;_
-          </span>
+          <img src="/icon.png" alt="" className="h-12 w-12 shrink-0 rounded-lg object-contain" />
           <span className="truncate font-display text-sm font-semibold text-foreground sm:text-base">
             Android Web Dev
           </span>
