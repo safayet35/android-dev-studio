@@ -10,10 +10,10 @@ const allTags = Array.from(new Set(issues.flatMap((i) => i.tags))).sort();
 
 export default function TroubleshootingPage() {
   useDocumentMeta({
-    title: "Troubleshooting Hub — Android Web Development",
+    title: "Troubleshooting Hub — Code With Android",
     description:
       "Searchable fixes for the errors you hit setting up Termux, Node.js, Git, Vite and Next.js on an Android phone.",
-    ogTitle: "Android Web Dev Troubleshooting",
+    ogTitle: "Troubleshooting — Code With Android",
     ogDescription:
       "Signature errors, permission failures, killed builds and sleeping dev servers, all with fixes.",
   });

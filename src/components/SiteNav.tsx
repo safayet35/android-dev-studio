@@ -17,10 +17,10 @@ export function SiteNav() {
   return (
     <div className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
       <div className="mx-auto flex max-w-5xl flex-col gap-1 px-4 py-2.5 sm:grid sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-3 sm:py-3">
-        <Link to="/" className="flex min-w-0 items-center gap-2" aria-label="Android Web Dev home">
-          <img src="/icon.png" alt="" className="h-12 w-12 shrink-0 rounded-lg object-contain" />
-          <span className="truncate font-display text-sm font-semibold text-foreground sm:text-base">
-            Android Web Dev
+        <Link to="/" className="flex min-w-0 items-center" aria-label="Code With Android home">
+          <img src="/icon.png" alt="" className="h-14 w-14 shrink-0 rounded-lg object-contain" />
+          <span className="truncate font-display text-lg font-semibold text-foreground sm:text-base">
+            CWA
           </span>
         </Link>
         <nav
@@ -45,7 +45,7 @@ export function SiteFooter() {
         Built for people whose only computer fits in a pocket.
       </p>
       <p className="mt-3 font-mono text-xs text-muted-foreground">
-        Built by Safayet Rahman{" "}
+        by Safayet{" "}
         <a
           href="https://github.com/safayet35"
           target="_blank"

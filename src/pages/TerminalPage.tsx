@@ -5,10 +5,10 @@ import { useDocumentMeta } from "@/hooks/use-document-meta";
 
 export default function TerminalPage() {
   useDocumentMeta({
-    title: "Terminal Simulator — Android Web Development",
+    title: "Terminal Simulator — Code With Android",
     description:
       "Practice Termux commands in a safe simulated terminal before you run anything on your own phone.",
-    ogTitle: "Termux Terminal Simulator",
+    ogTitle: "Termux Terminal Simulator — Code With Android",
     ogDescription: "Try pkg update, node -v, and a Vite scaffold without installing anything.",
   });
 

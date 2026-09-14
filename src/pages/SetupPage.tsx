@@ -18,10 +18,10 @@ const materialFilesSteps = [
 
 export default function SetupPage() {
   useDocumentMeta({
-    title: "Setup Guide: Termux to Next.js — Android Web Development",
+    title: "Setup Guide: Termux to Next.js — Code With Android",
     description:
       "Step-by-step Android setup for Termux, Node.js, Acode, Git, React with Vite and Next.js, with copyable commands and a saved progress checklist.",
-    ogTitle: "Android Setup Guide: Termux to Next.js",
+    ogTitle: "Android Setup Guide: Termux to Next.js — Code With Android",
     ogDescription:
       "Six modules of copy-and-run commands that turn a phone into a web development machine.",
   });

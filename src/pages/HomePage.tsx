@@ -6,12 +6,12 @@ import { modules, toolPairs } from "@/lib/content";
 
 export default function HomePage() {
   useDocumentMeta({
-    title: "Android Web Development — Code on Your Phone",
+    title: "Code With Android — Web Development on Android | by Safayet",
     description:
-      "Turn an Android phone into a web development machine. Check hardware compatibility, then set up Termux, Node.js, Acode, Git, React and Next.js step by step.",
-    ogTitle: "Android Web Development — Code on Your Phone",
+      "Learn how to build and run real web development projects using an Android phone. Set up Termux, Acode, Node.js, Git, React, Next.js, MongoDB and more — all from Android.",
+    ogTitle: "Code With Android — Web Development on Android",
     ogDescription:
-      "An interactive, mobile-first guide to building real web apps using nothing but an Android phone.",
+      "Learn web development using only an Android phone. Set up your complete coding environment and build real projects with Termux, Acode, Node.js, React, Next.js, Git and more.",
   });
 
   return (

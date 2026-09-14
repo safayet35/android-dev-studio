@@ -10,10 +10,10 @@ const gapLabel = {
 
 export default function ToolsPage() {
   useDocumentMeta({
-    title: "PC vs Android Dev Tools — Android Web Development",
+    title: "PC vs Android Dev Tools — Code With Android",
     description:
       "Side-by-side comparison of desktop web development tools and their Android equivalents: Termux, Acode, Git, devtools, databases and deploys.",
-    ogTitle: "PC vs Android Dev Tools",
+    ogTitle: "PC vs Android Dev Tools — Code With Android",
     ogDescription:
       "What transfers from a laptop to a phone, what is close, and what needs a workaround.",
   });

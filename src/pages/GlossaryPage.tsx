@@ -9,10 +9,10 @@ const categories = ["All", ...Array.from(new Set(glossary.map((g) => g.category)
 
 export default function GlossaryPage() {
   useDocumentMeta({
-    title: "Developer Glossary — Android Web Development",
+    title: "Developer Glossary — Code With Android",
     description:
       "Plain-language definitions of the terms you meet while setting up web development on an Android phone.",
-    ogTitle: "Developer Glossary",
+    ogTitle: "Developer Glossary — Code With Android",
     ogDescription: "Termux, npm, commits, ports, builds and more, explained without jargon.",
   });
 

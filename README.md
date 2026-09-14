@@ -1,6 +1,6 @@
-# Android Dev Studio
+# Code With Android
 
-Build the "Android Web Development" educational web platform from the PRD: an interactive, mobile-first guide for turning an Android phone into a web dev machine with Termux, Acode, Node.js, Git, React (Vite), and Next.js. Include the interactive hardware compatibility checker, PC-to-Android tool comparison cards, step-by-step setup tutorials with copyable commands, interactive progress checklist saved to localStorage, searchable troubleshooting hub, terminal simulator preview, and developer glossary.
+An interactive, mobile-first guide for turning an Android phone into a web dev machine with Termux, Acode, Node.js, Git, React (Vite), and Next.js. Include the interactive hardware compatibility checker, PC-to-Android tool comparison cards, step-by-step setup tutorials with copyable commands, interactive progress checklist saved to localStorage, searchable troubleshooting hub, terminal simulator preview, and developer glossary.
 
 This project was built with [Lovable](https://lovable.dev).
 
