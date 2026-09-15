@@ -19,6 +19,7 @@ export type AcodeExtension = {
   name: string;
   icon: string;
   description: string;
+  src: string;
 };
 
 export const acodeExtensions: AcodeExtension[] = [
@@ -27,12 +28,14 @@ export const acodeExtensions: AcodeExtension[] = [
     name: "Prettier",
     icon: "/extensions/acode.plugin.prettier.png",
     description: "Prettier is an opinionated code formatter that enforces a consistent style across your codebase.",
+    src: "https://acode.app/plugin/acode.plugin.prettier",
   },
   {
-    slug: "theme",
+    slug: "chai-theme",
     name: "Chai Theme",
     icon: "/extensions/acode.plugin.chaitheme.png",
     description: "Chai Theme, a stylish and customizable theme extension that brings a fresh, warm, and smooth look to your browsing experience.",
+    src: "https://acode.app/plugin/acode.plugin.chaitheme",
   },
   {
     slug: "emmet",
@@ -40,39 +43,43 @@ export const acodeExtensions: AcodeExtension[] = [
     icon: "/extensions/acode.plugin.emmet.png",
     description:
       "Expands short snippets into full HTML and CSS, saving hundreds of phone-keyboard taps.",
+    src: "https://acode.app/plugin/acode.plugin.emmet",
   },
-    
   {
     slug: "extra-syntax-highlights-2.0",
     name: "Extra Syntax Highlights 2.0",
     icon: "/extensions/acode.plugin.extra_syntax_highlights.png",
     description: "Colorize your indent lines . Works in all modes and all themes",
+    src: "https://acode.app/plugin/acode.plugin.extra_syntax_highlights",
   },
   {
     slug: "react/redux-snippets",
     name: "Acode ES7+ React/Redux snippets",
     icon: "/extensions/acode.react.snippets.png",
     description: "This plugin provides a collection of ES7+ React/Redux snippets to enhance your development workflow.",
+    src: "https://acode.app/plugin/bajrangcoder.react.snippets",
   },
   {
     slug: "tailwindcss-intellisense",
     name: "Tailwindcss Intellisense",
     icon: "/extensions/acode.plugin.tailwindcss_intellisense.png",
     description: "Enhance your Acode editor with Tailwind CSS Autocompletion and intellisense for faster and more efficient development.",
+    src: "https://acode.app/plugin/acode.plugin.tailwindcss_intellisense",
   },
   {
     slug: "snippets",
     name: "Snippets",
     icon: "/extensions/acode.plugin.snippets.png",
     description: "Snippets plugin for the Ace and CodeMirror editors in Acode. It provides code autocompletion.",
+    src: "https://acode.app/plugin/acode.plugin.snippets",
   },
   {
     slug: "path-autocomplete",
     name: "Path Autocomplete",
     icon: "/extensions/acode.pathautocomplete.png",
     description: "Get path suggestions efficiently. Has a cache system. Performance is the main focus. Only triggers inside string Token",
+    src: "https://acode.app/plugin/acode.pathautocomplete",
   },
-
 ];
 
 export const modules: Module[] = [
