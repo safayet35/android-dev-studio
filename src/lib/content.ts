@@ -52,8 +52,26 @@ export const acodeExtensions: AcodeExtension[] = [
     slug: "react/redux-snippets",
     name: "Acode ES7+ React/Redux snippets",
     icon: "/extensions/acode.react.snippets.png",
-    description: "This plugin provides a collection of ES7+ React/Redux snippets to enhance your development workflow on mobile. ",
-  }
+    description: "This plugin provides a collection of ES7+ React/Redux snippets to enhance your development workflow.",
+  },
+  {
+    slug: "tailwindcss-intellisense",
+    name: "Tailwindcss Intellisense",
+    icon: "/extensions/acode.plugin.tailwindcss_intellisense.png",
+    description: "Enhance your Acode editor with Tailwind CSS Autocompletion and intellisense for faster and more efficient development.",
+  },
+  {
+    slug: "snippets",
+    name: "Snippets",
+    icon: "/extensions/acode.plugin.snippets.png",
+    description: "Snippets plugin for the Ace and CodeMirror editors in Acode. It provides code autocompletion.",
+  },
+  {
+    slug: "path-autocomplete",
+    name: "Path Autocomplete",
+    icon: "/extensions/acode.pathautocomplete.png",
+    description: "Get path suggestions efficiently. Has a cache system. Performance is the main focus. Only triggers inside string Token",
+  },
 
 ];
 
