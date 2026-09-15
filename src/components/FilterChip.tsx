@@ -13,7 +13,7 @@ export function FilterChip({
       onClick={onClick}
       aria-pressed={active}
       className={
-        "rounded-lg border px-3 py-2 font-mono text-xs transition-colors " +
+        "rounded-lg border px-2.5 py-1.5 font-mono text-xs transition-colors " +
         (active
           ? "border-primary bg-primary text-primary-foreground"
           : "border-border bg-secondary text-muted-foreground hover:text-foreground")

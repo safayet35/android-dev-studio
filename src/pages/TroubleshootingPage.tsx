@@ -67,7 +67,7 @@ export default function TroubleshootingPage() {
             return (
               <article
                 key={i.id}
-                className="overflow-hidden rounded-2xl border border-border bg-card"
+                className="overflow-hidden rounded-xl border border-border bg-card"
               >
                 <button
                   type="button"

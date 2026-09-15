@@ -129,7 +129,7 @@ export function HardwareChecker() {
   return (
     <section
       id="checker"
-      className="scroll-mt-24 rounded-2xl border border-border bg-card p-4 sm:p-6"
+      className="scroll-mt-24 rounded-xl border border-border bg-card p-4 sm:p-6"
     >
       <h2 className="font-display text-xl text-foreground sm:text-2xl">
         Will your phone handle it?
@@ -184,7 +184,7 @@ export function HardwareChecker() {
           ref={resultRef}
           tabIndex={-1}
           role="status"
-          className={`mt-5 rounded-xl border bg-background/60 p-4 outline-none ${toneClass}`}
+          className={`mt-5 rounded-lg border bg-background/60 p-4 outline-none ${toneClass}`}
         >
           <p className="font-mono text-xs uppercase tracking-widest">Result</p>
           <p className="mt-1 font-display text-xl">{result.level}</p>

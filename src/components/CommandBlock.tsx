@@ -30,7 +30,7 @@ export function CommandBlock({ commands }: { commands: string[] }) {
   };
 
   return (
-    <div className="overflow-hidden rounded-xl border border-border bg-terminal">
+    <div className="overflow-hidden rounded-lg border border-border bg-terminal">
       {commands.map((cmd, i) => (
         <div
           key={`${i}-${cmd.slice(0, 16)}`}

@@ -53,7 +53,7 @@ export default function GlossaryPage() {
 
         <dl className="mt-6 space-y-3">
           {results.map((g) => (
-            <div key={g.term} className="rounded-2xl border border-border bg-card p-4">
+            <div key={g.term} className="rounded-xl border border-border bg-card p-4">
               <dt className="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-2">
                 <span className="min-w-0 font-display text-base break-words text-foreground">
                   {g.term}

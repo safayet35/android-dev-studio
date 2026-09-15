@@ -72,7 +72,7 @@ export function TerminalSim() {
   };
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-border bg-terminal">
+    <div className="overflow-hidden rounded-xl border border-border bg-terminal">
       <div className="flex items-center gap-2 border-b border-border px-3 py-2">
         <span aria-hidden className="flex items-center gap-2">
           <span className="h-2.5 w-2.5 rounded-full bg-destructive" />

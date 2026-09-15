@@ -54,7 +54,7 @@ export default function HomePage() {
               <Link
                 key={m.slug}
                 to={{ pathname: "/setup", hash: m.slug }}
-                className="group rounded-2xl border border-border bg-card p-4 transition-colors hover:border-primary"
+                className="group rounded-xl border border-border bg-card p-4 transition-colors hover:border-primary/60"
               >
                 <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-2">
                   <h3 className="min-w-0 font-display text-base text-foreground">{m.title}</h3>
@@ -97,7 +97,7 @@ export default function HomePage() {
             <Link
               key={c.to}
               to={c.to}
-              className="rounded-2xl border border-border bg-card p-4 transition-colors hover:border-primary"
+              className="rounded-xl border border-border bg-card p-4 transition-colors hover:border-primary/60"
             >
               <h3 className="font-display text-base text-foreground">{c.title}</h3>
               <p className="mt-1.5 text-sm text-muted-foreground">{c.copy}</p>

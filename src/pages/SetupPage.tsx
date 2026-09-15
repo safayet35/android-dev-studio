@@ -39,7 +39,7 @@ export default function SetupPage() {
       />
 
       <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
-        <div className="sticky top-[calc(var(--nav-h)+8px)] z-40 rounded-2xl border border-border bg-card/95 p-4 backdrop-blur">
+        <div className="sticky top-[calc(var(--nav-h)+8px)] z-40 rounded-xl border border-border bg-card/95 p-4 backdrop-blur">
           <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
             <div className="min-w-0">
               <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
@@ -78,7 +78,7 @@ export default function SetupPage() {
             return (
               <section key={m.slug} id={m.slug} className="scroll-mt-32">
                 <div className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-3">
-                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-border bg-card font-mono text-sm text-accent">
+                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-border bg-card font-mono text-sm text-accent">
                     {String(mi + 1).padStart(2, "0")}
                   </span>
                   <div className="min-w-0">
@@ -97,7 +97,7 @@ export default function SetupPage() {
                       <li
                         key={s.id}
                         className={
-                          "rounded-2xl border bg-card p-4 transition-colors " +
+                          "rounded-xl border bg-card p-4 transition-colors " +
                           (checked ? "border-primary/60" : "border-border")
                         }
                       >
@@ -108,7 +108,7 @@ export default function SetupPage() {
                             aria-pressed={checked}
                             aria-label={`Mark step complete: ${s.title}`}
                             className={
-                              "mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-md border transition-colors " +
+                              "mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded border transition-colors " +
                               (checked
                                 ? "border-primary bg-primary text-primary-foreground"
                                 : "border-border bg-secondary")
@@ -141,7 +141,7 @@ export default function SetupPage() {
                               </ul>
                             )}
                             {s.id === "material-files" && (
-                              <div className="mt-4 rounded-xl border border-border bg-secondary/40 p-4 sm:p-5">
+                              <div className="mt-4 rounded-lg border border-border bg-secondary/40 p-4 sm:p-5">
                                 <p className="mb-4 font-mono text-xs uppercase tracking-widest text-accent">
                                   Setup flow
                                 </p>

@@ -27,9 +27,9 @@
 
 :root {
   --radius: 0.75rem;
-  --nav-h: 104px;
+  --nav-h: 80px;
   @media (min-width: 640px) {
-    --nav-h: 57px;
+    --nav-h: 52px;
   }
   --background: oklch(0.19 0.019 260);
   --foreground: oklch(0.95 0.008 250);

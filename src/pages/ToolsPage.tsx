@@ -30,7 +30,7 @@ export default function ToolsPage() {
           {toolPairs.map((t) => {
             const g = gapLabel[t.gap];
             return (
-              <article key={t.task} className="rounded-2xl border border-border bg-card p-4">
+              <article key={t.task} className="rounded-xl border border-border bg-card p-4">
                 <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3">
                   <h2 className="min-w-0 font-display text-lg text-foreground">{t.task}</h2>
                   <span

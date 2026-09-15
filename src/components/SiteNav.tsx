@@ -10,22 +10,24 @@ const links = [
 ] as const;
 
 const navLinkClass = ({ isActive }: { isActive: boolean }) =>
-  "shrink-0 whitespace-nowrap rounded-md px-3 py-2 font-mono text-xs transition-colors hover:text-foreground " +
+  "shrink-0 whitespace-nowrap rounded-md px-2.5 py-1.5 font-mono text-xs transition-colors hover:text-foreground " +
   (isActive ? "text-primary" : "text-muted-foreground");
 
 export function SiteNav() {
   return (
     <div className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
-      <div className="mx-auto flex max-w-5xl flex-col gap-1 px-4 py-2.5 sm:grid sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-3 sm:py-3">
-        <Link to="/" className="flex min-w-0 items-center" aria-label="Code With Android home">
-          <img src="/icon.png" alt="" className="h-14 w-14 shrink-0 rounded-lg object-contain" />
-          <span className="truncate font-display text-lg font-semibold text-foreground sm:text-base">
-            CWA
-          </span>
+      <div className="mx-auto flex max-w-5xl flex-col gap-1 px-4 py-2 sm:grid sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-4 sm:py-2.5">
+        <Link
+          to="/"
+          className="flex min-w-0 items-center gap-2"
+          aria-label="Code With Android home"
+        >
+          <img src="/icon.png" alt="" className="h-8 w-8 shrink-0 rounded-lg object-contain" />
+          <span className="truncate font-display text-base font-semibold text-foreground">CWA</span>
         </Link>
         <nav
           aria-label="Primary"
-          className="-mx-1 flex w-full items-center gap-1 overflow-x-auto px-1 py-0.5 [-ms-overflow-style:none] [scrollbar-width:none] sm:mx-0 sm:w-auto sm:px-0 [&::-webkit-scrollbar]:hidden"
+          className="-mx-1 flex w-full items-center gap-0.5 overflow-x-auto px-1 py-0.5 [-ms-overflow-style:none] [scrollbar-width:none] sm:mx-0 sm:w-auto sm:px-0 [&::-webkit-scrollbar]:hidden"
         >
           {links.slice(1).map((l) => (
             <NavLink key={l.to} to={l.to} className={navLinkClass}>

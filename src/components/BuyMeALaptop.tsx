@@ -58,7 +58,7 @@ export function BuyMeALaptop() {
         aria-label={`Support ${SUPPORT_NAME} — Buy Me a Laptop`}
         aria-haspopup="dialog"
         aria-expanded={open}
-        className="fixed right-[calc(1rem+env(safe-area-inset-right))] bottom-[calc(1rem+env(safe-area-inset-bottom))] z-50 overflow-hidden rounded-2xl border border-border shadow-lg transition-transform hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary active:scale-95 sm:right-[calc(1.5rem+env(safe-area-inset-right))] sm:bottom-[calc(1.5rem+env(safe-area-inset-bottom))]"
+        className="fixed right-[calc(1rem+env(safe-area-inset-right))] bottom-[calc(1rem+env(safe-area-inset-bottom))] z-50 overflow-hidden rounded-xl border border-border shadow-lg transition-all hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary active:scale-95 sm:right-[calc(1.5rem+env(safe-area-inset-right))] sm:bottom-[calc(1.5rem+env(safe-area-inset-bottom))]"
       >
         <img
           src="/buy-laptop.png"
@@ -80,7 +80,7 @@ export function BuyMeALaptop() {
             aria-modal="true"
             aria-labelledby="buy-laptop-title"
             onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-sm rounded-2xl border border-border bg-card p-6"
+            className="w-full max-w-sm rounded-xl border border-border bg-card p-6"
           >
             <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-4">
               <h2
@@ -144,7 +144,7 @@ export function BuyMeALaptop() {
             <button
               type="button"
               onClick={() => setOpen(false)}
-              className="mt-3 w-full rounded-xl border border-border bg-card px-5 py-3 font-mono text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+              className="mt-3 w-full rounded-lg border border-border bg-card px-5 py-2.5 font-mono text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
             >
               Maybe later
             </button>

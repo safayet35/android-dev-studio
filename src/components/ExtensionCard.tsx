@@ -5,7 +5,7 @@ export function ExtensionCard({ extension }: { extension: AcodeExtension }) {
   const [imgOk, setImgOk] = useState(true);
 
   return (
-    <li className="min-w-0 rounded-2xl border border-border bg-card p-4">
+    <li className="min-w-0 rounded-xl border border-border bg-card p-4">
       <div className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-3">
         {imgOk ? (
           <img
