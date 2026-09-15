@@ -1,4 +1,4 @@
-# ARCHITECTURE — Android Dev Studio
+# ARCHITECTURE — Code With Android (CWA)
 
 ## 1. Overview
 
@@ -32,8 +32,7 @@ Plain Vite SPA with React Router. No SSR, no data fetching, no backend. Flow: `i
 
 - `lib/content.ts`: `Step{id,title,body,commands?,note?}`, `Module{slug,title,tagline,minutes,steps}`, `ToolPair{task,pc,android,gap,detail}`, `Issue{id,title,symptoms,fix,commands?,tags[]}`, glossary `{term,definition,category}`. Counts: 6 modules / 20 steps / 8 pairs / 9 issues / 20 terms.
 - `hooks/use-progress.ts`: `done:string[]` + `loaded` + `toggle/reset/isDone`, localStorage `awd-progress-v1`, functional updates, shape-validated parse.
-- `hooks/use-document-meta.ts`: sets `document.title` + description/`og:title`/`og:description` per page, restores on unmount. No SSR — SEO is client-side.
-- `hooks/use-mobile.tsx` (`useIsMobile`) — exists, unused.
+- `hooks/use-document-meta.ts`: sets `document.title` + description/`og:title`/`og:description` per page, restores on unmount. No SSR — SEO is client-side. Site-wide `og:site_name` (`Code With Android`), `og:image` (`/og-image.jpeg`), and twitter `title`/`description` live in `index.html`.
 - `lib/lovable-error-reporting.ts`: `reportLovableError` used by the error boundary.
 
 ## 5. Styling / layout

@@ -1,6 +1,10 @@
-# Code With Android
+# Code With Android (CWA) — by Safayet
 
-An interactive, mobile-first guide for turning an Android phone into a web dev machine with Termux, Acode, Node.js, Git, React (Vite), and Next.js. Include the interactive hardware compatibility checker, PC-to-Android tool comparison cards, step-by-step setup tutorials with copyable commands, interactive progress checklist saved to localStorage, searchable troubleshooting hub, terminal simulator preview, and developer glossary.
+Learn web development using an Android phone. Code With Android is an interactive, mobile-first guide for turning an Android phone into a web dev machine with Termux, Acode, Node.js, Git, React (Vite), and Next.js.
+
+This is about web development *using* an Android phone — not Android app development.
+
+Features: interactive hardware compatibility checker, PC-to-Android tool comparison cards, step-by-step setup tutorials with copyable commands, interactive progress checklist saved to localStorage, searchable troubleshooting hub, terminal simulator preview, and developer glossary.
 
 This project was built with [Lovable](https://lovable.dev).
 

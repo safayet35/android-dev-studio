@@ -1,20 +1,26 @@
-# TASKS — Android Dev Studio
+# TASKS — Code With Android (CWA)
+
+## Completed — rebrand to Code With Android
+
+- [x] Site brand: `Code With Android` + short `CWA` + `by Safayet` (`index.html`, `SiteNav`, all 6 pages, `README.md`)
+- [x] SEO: title `Code With Android — Web Development on Android | by Safayet`, `og:site_name`, `og:image` (`/og-image.jpeg`), twitter `title`/`description`
+- [x] Clarify web development *using* Android phone, not Android app development
 
 ## Completed (verified in codebase)
 
-- [x] 6 routes with `head()` SEO: `/`, `/setup`, `/tools`, `/terminal`, `/troubleshooting`, `/glossary`
-- [x] App shell: `SiteNav`, `SiteFooter`, 404, 500 (`__root.tsx`)
+- [x] 6 routes with `useDocumentMeta` SEO: `/`, `/setup`, `/tools`, `/terminal`, `/troubleshooting`, `/glossary`
+- [x] App shell: `SiteNav`, `SiteFooter`, 404 (`App.tsx`)
 - [x] `HardwareChecker` scoring (RAM/storage/Android/chip → 3 levels + notes)
-- [x] 6 setup modules / 20 steps with `CommandBlock` copy (`content.ts`, `setup.tsx`)
-- [x] `useProgress` localStorage persistence (`awd-progress-v1`)
-- [x] 8 `toolPairs` comparison cards (`tools.tsx`)
+- [x] 6 setup modules / 20 steps with `CommandBlock` copy (`content.ts`, `SetupPage.tsx`)
+- [x] `useProgress` localStorage persistence (`awd-progress-v1` — legacy key preserved)
+- [x] 8 `toolPairs` comparison cards (`ToolsPage.tsx`)
 - [x] `TerminalSim` mock (`help, pkg, node, npm, git, ls, pwd, whoami, vite, dev, clear`) — npm-only
 - [x] pnpm → npm swap (step `node-pnpm` retitled, all commands npm-only, pnpm glossary term deleted; step `id` kept for saved progress)
-- [x] 9 `issues` search + tag + accordion (`troubleshooting.tsx`)
-- [x] 20-term `glossary` search + category + sort (`glossary.tsx`)
+- [x] 9 `issues` search + tag + accordion (`TroubleshootingPage.tsx`)
+- [x] 20-term `glossary` search + category + sort (`GlossaryPage.tsx`)
 - [x] Dark-only Tailwind v4 oklch theme + `grid-backdrop` + mobile-first overflow guards
-- [x] SSR plumbing: `start.ts` (error+CSRF middleware), `server.ts` (h3 error normalization), `router.tsx`
-- [x] `robots.txt` allow-all, `favicon.ico`
+- [x] SSR plumbing removed: `start.ts` (error+CSRF middleware), `server.ts` (h3 error normalization), `router.tsx` (see React Router migration below)
+- [x] `robots.txt` allow-all, `favicon.ico`, `og-image.jpeg`
 
 ## Current (documentation baseline)
 
@@ -51,15 +57,15 @@
 - [x] P0: `TerminalSim` files in `useRef`, stable keys, `scrollIntoView(false)`, `role=log aria-live`
 - [x] P0: `useProgress` functional `toggle` + `JSON.parse` shape validation (key `awd-progress-v1` unchanged)
 - [x] Dedupe: new `FilterChip` / `SearchInput` / `Card` in `src/components/`; migrated `HardwareChecker`, `troubleshooting`, `glossary`, `terminal`
-- [x] `package.json`: renamed to `android-dev-studio`, added `typecheck: tsc --noEmit` (no dep changes)
-- [x] SEO/a11y minimal: `theme-color` + `og:image` in `__root`, skip-link + `main#content`, `public/sitemap.xml` + robots `Sitemap:`, `HardwareChecker` `scroll-mt-24` + result focus
+- [x] `package.json`: added `typecheck: tsc --noEmit` (no dep changes; `name: android-dev-studio` is a legacy package id, not the site brand)
+- [x] SEO/a11y minimal: `theme-color` + `og:image` in site meta, skip-link + `main#content`, `public/sitemap.xml` + robots `Sitemap:`, `HardwareChecker` `scroll-mt-24` + result focus
 - [x] Verified: touched-file eslint clean, `tsc --noEmit` clean, `vite build` clean
 
 ## Planned — remaining (explicitly deferred)
 
-- [ ] Prune `src/components/ui/*` (~40 unused of 46) and unused deps (`recharts, react-day-picker, embla-carousel, vaul, cmdk, zod, react-hook-form, input-otp, date-fns, sonner`)
-- [ ] Consider enabling `noUnusedLocals` + `@typescript-eslint/no-unused-vars`
-- [ ] Replace generic `README.md` Lovable template with real setup/deploy docs
+- [x] Prune `src/components/ui/*` (~40 unused of 46) and unused deps (`recharts, react-day-picker, embla-carousel, vaul, cmdk, zod, react-hook-form, input-otp, date-fns, sonner`) — done via full delete in cleanup above (`src/components/ui/` gone, deps absent from `package.json`)
+- [ ] Consider enabling `noUnusedLocals` + `@typescript-eslint/no-unused-vars` (`tsconfig.json` still has both `false`)
+- [ ] Replace generic `README.md` Lovable template with real setup/deploy docs (branded but Lovable boilerplate still present)
 
 ## Planned — P2 polish (remaining)
 

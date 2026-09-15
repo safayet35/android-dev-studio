@@ -1,6 +1,6 @@
-# TECH_STACK — Android Dev Studio
+# TECH_STACK — Code With Android (CWA)
 
-Based on `package.json`, `vite.config.ts`, `tsconfig.json`, `components.json`, `index.html`, `src/*`.
+Based on `package.json`, `vite.config.ts`, `tsconfig.json`, `index.html`, `src/*`.
 
 ## 1. Core
 
@@ -17,12 +17,13 @@ No SSR, no Nitro, no TanStack packages, no react-query. Output is a static SPA i
 
 ## 2. Styling / UI
 
-- `tailwindcss@^4.2.1`, `@tailwindcss/vite@^4.2.1`, `tw-animate-css@^1.3.4`, `clsx@^2.1.1`, `tailwind-merge@^3.5.0`, `class-variance-authority@^0.7.1`
+- `tailwindcss@^4.2.1`, `@tailwindcss/vite@^4.2.1` (only Tailwind deps in `package.json` — `tw-animate-css`/`clsx`/`tailwind-merge`/`cva` were pruned)
 - Fonts (static links in `index.html`): `Space Grotesk` (display), `DM Sans` (sans), `JetBrains Mono` (mono)
+- Site meta in `index.html`: `og:site_name` (`Code With Android`), `og:image` (`/og-image.jpeg`), twitter `title`/`description`
 
 ## 3. Removed in cleanup (were installed but unused)
 
-Deleted `src/components/ui/*` (46 shadcn files) and pruned ~40 packages: all `@radix-ui/*`, `@hookform/resolvers`, `class-variance-authority`, `clsx`, `cmdk`, `date-fns`, `embla-carousel-react`, `input-otp`, `react-day-picker`, `react-hook-form`, `react-resizable-panels`, `recharts`, `sonner`, `tailwind-merge`, `tw-animate-css`, `vaul`, `zod`, plus `src/lib/utils.ts` (`cn()`), `src/hooks/use-mobile.tsx`, `components.json`. CSS shrank ~76kB → ~22kB.
+Deleted `src/components/ui/*` (46 shadcn files) and pruned ~40 packages: all `@radix-ui/*`, `@hookform/resolvers`, `class-variance-authority`, `clsx`, `cmdk`, `date-fns`, `embla-carousel-react`, `input-otp`, `react-day-picker`, `react-hook-form`, `react-resizable-panels`, `recharts`, `sonner`, `tailwind-merge`, `tw-animate-css`, `vaul`, `zod`, plus `src/lib/utils.ts` (`cn()`), `src/hooks/use-mobile.tsx`. CSS shrank ~76kB → ~22kB.
 
 ## 4. Scripts & targets
 

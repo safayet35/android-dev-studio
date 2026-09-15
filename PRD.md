@@ -1,10 +1,10 @@
-# PRD — Android Dev Studio
+# PRD — Code With Android (CWA)
 
 ## 1. Goal
 
-Interactive, mobile-first guide that takes a user from a blank Android phone to a running web app using only the phone. No laptop required.
+Code With Android by Safayet — interactive, mobile-first guide that takes a user from a blank Android phone to a running web app using only the phone. Teaches web development *using* an Android phone, not Android app development. No laptop required.
 
-Source of truth: `README.md:3` + implemented routes in `src/routes/`.
+Source of truth: `README.md` + implemented routes in `src/pages/` + `src/App.tsx`.
 
 ## 2. Users
 
@@ -16,16 +16,16 @@ Source of truth: `README.md:3` + implemented routes in `src/routes/`.
 
 | Feature | Route | Data source | Status |
 |---|---|---|---|
-| Hero + module overview + tool teaser | `/` (`index.tsx`) | `modules`, `toolPairs` | Done |
+| Hero + module overview + tool teaser | `/` (`HomePage.tsx`) | `modules`, `toolPairs` | Done |
 | Hardware compatibility checker (RAM/storage/Android/chip → Ready/Good/Limited + notes) | `/#checker` (`HardwareChecker.tsx`) | local scoring `verdict()` | Done |
-| Setup tutorials: Termux, Node, Acode, Git, React+Vite, Next.js — 20 steps with copyable commands + notes | `/setup` (`setup.tsx`) | `modules`, `allSteps` | Done |
+| Setup tutorials: Termux, Node, Acode, Git, React+Vite, Next.js — 20 steps with copyable commands + notes | `/setup` (`SetupPage.tsx`) | `modules`, `allSteps` | Done |
 | Progress checklist persisted to localStorage | `/setup` (`use-progress.ts`, key `awd-progress-v1`) | step `id`s | Done |
-| PC vs Android tool comparison (8 cards: Terminal, Editor, Runtime, Git, Devtools, DB, Containers, Deploys) | `/tools` (`tools.tsx`) | `toolPairs`, `gap: same\|close\|workaround` | Done |
-| Terminal simulator (safe Termux imitation: `help, pkg, node, npm, pnpm, git, ls, pwd, whoami, vite scaffold, dev server, clear`) | `/terminal` (`TerminalSim.tsx`) | `respond()` | Done |
-| Searchable troubleshooting hub (9 issues, tag filter + accordion + commands) | `/troubleshooting` | `issues` | Done |
-| Developer glossary (20 terms, search + category filter, sorted) | `/glossary` | `glossary` | Done |
-| App shell: sticky nav, footer, 404/500 | `__root.tsx` | — | Done |
-| SEO per-route `head()` + `robots.txt` allow-all | all routes | — | Done (minimal) |
+| PC vs Android tool comparison (8 cards: Terminal, Editor, Runtime, Git, Devtools, DB, Containers, Deploys) | `/tools` (`ToolsPage.tsx`) | `toolPairs`, `gap: same\|close\|workaround` | Done |
+| Terminal simulator (safe Termux imitation: `help, pkg, node, npm, git, ls, pwd, whoami, vite scaffold, dev server, clear`) | `/terminal` (`TerminalSim.tsx`) | `respond()` | Done |
+| Searchable troubleshooting hub (9 issues, tag filter + accordion + commands) | `/troubleshooting` (`TroubleshootingPage.tsx`) | `issues` | Done |
+| Developer glossary (20 terms, search + category filter, sorted) | `/glossary` (`GlossaryPage.tsx`) | `glossary` | Done |
+| App shell: sticky nav, footer, 404 | `App.tsx` | — | Done |
+| SEO per-route `useDocumentMeta` + site meta in `index.html` + `robots.txt` allow-all | all routes | — | Done |
 
 ## 4. MVP scope
 
@@ -42,7 +42,7 @@ MVP is met — all 7 content features from `README.md` exist.
 ## 6. Future direction (not started)
 
 - Prune dead `ui/*` + unused deps; extract `FilterChip`/`Card` to remove duplication.
-- SEO: `og:image`, `canonical`, `sitemap.xml`, JSON-LD.
+- SEO: `canonical`, `sitemap.xml` loc prefix on deploy, JSON-LD (`og:image` + `og:site_name` + twitter tags done).
 - A11y: skip-link, `aria-live` terminal output, focus management.
 - Fix known issues in `TASKS.md` (duplicate `key={cmd}`, magic `top-[57px]`, `activeProps` merge).
 - Optional: PWA/offline, more sim commands, deep-linkable setup steps (`/setup#termux` exists via `id={slug}`).

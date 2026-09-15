@@ -1,6 +1,13 @@
-# CHANGELOG — Android Dev Studio
+# CHANGELOG — Code With Android (CWA)
 
 Format: Keep a Changelog (`Added/Changed/Fixed/Removed`). Dates UTC.
+
+## [Unreleased — rebrand to Code With Android]
+
+### Changed
+
+- Site brand: `Code With Android` (short `CWA`), attribution `by Safayet` — `index.html` title/meta, `SiteNav` logo + footer, all 6 page `useDocumentMeta` titles, `README.md`.
+- SEO: title `Code With Android — Web Development on Android | by Safayet`, `og:site_name`, `og:image` (`/og-image.jpeg`), twitter `title`/`description`. Wording clarifies web development *using* an Android phone, not Android app development.
 
 ## [Unreleased — cleanup]
 
@@ -59,7 +66,7 @@ Format: Keep a Changelog (`Added/Changed/Fixed/Removed`). Dates UTC.
 - `src/components/FilterChip.tsx`, `SearchInput.tsx`, `Card.tsx`; migrated `HardwareChecker`, `troubleshooting`, `glossary`, `terminal`.
 - `public/sitemap.xml` (prefix locs with production origin on deploy); robots `Sitemap:` ref.
 - `__root`: `theme-color`, `og:image`, skip-link, `main#content`.
-- `package.json`: `typecheck: tsc --noEmit`; renamed to `android-dev-studio`.
+- `package.json`: `typecheck: tsc --noEmit` (historic rename to `android-dev-studio` kept as legacy package id, not the site brand).
 
 ### Verified
 
