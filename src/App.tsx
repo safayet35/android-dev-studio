@@ -29,10 +29,14 @@ function ScrollToTop() {
 function NotFound() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="font-display text-5xl text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
+      <div className="w-full max-w-md rounded-2xl border border-border/70 bg-card p-8 text-center shadow-sm">
+        <p className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-primary">
+          404
+        </p>
+        <h1 className="mt-2 font-display text-4xl tracking-tight text-foreground">
+          Page not found
+        </h1>
+        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
           The page you&apos;re looking for doesn&apos;t exist or has been moved.
         </p>
         <div className="mt-6">
@@ -64,8 +68,8 @@ class RouteErrorBoundary extends Component<
     if (this.state.error) {
       return (
         <div className="flex min-h-screen items-center justify-center bg-background px-4">
-          <div className="max-w-md text-center">
-            <h1 className="text-xl font-semibold tracking-tight text-foreground">
+          <div className="w-full max-w-md rounded-xl border border-border/70 bg-card p-8 text-center shadow-sm sm:p-10">
+            <h1 className="font-display text-xl font-semibold tracking-tight text-foreground">
               This page didn&apos;t load
             </h1>
             <p className="mt-2 text-sm text-muted-foreground">

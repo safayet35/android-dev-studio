@@ -71,7 +71,7 @@ export function BuyMeALaptop() {
 
       {open && (
         <div
-          className="fixed inset-0 z-[70] grid place-items-center overflow-y-auto bg-background/80 px-4 py-6 backdrop-blur-sm"
+          className="fixed inset-0 z-[70] grid place-items-center overflow-y-auto bg-background/80 px-4 py-6 backdrop-blur-md"
           onClick={() => setOpen(false)}
         >
           <div
@@ -80,7 +80,7 @@ export function BuyMeALaptop() {
             aria-modal="true"
             aria-labelledby="buy-laptop-title"
             onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-sm rounded-xl border border-border bg-card p-6"
+            className="w-full max-w-sm rounded-xl border border-border/70 bg-card p-6 shadow-xl sm:p-7"
           >
             <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-4">
               <h2
@@ -94,7 +94,7 @@ export function BuyMeALaptop() {
                 type="button"
                 onClick={() => setOpen(false)}
                 aria-label="Close support dialog"
-                className="grid h-8 w-8 shrink-0 place-items-center rounded-lg border border-border font-mono text-xs leading-none text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-border font-mono text-xs leading-none text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
               >
                 ✕
               </button>
@@ -105,7 +105,7 @@ export function BuyMeALaptop() {
               {formatBDT(LAPTOP_FUND.current)} — only {formatBDT(remaining)} to go.
             </p>
 
-            <div className="mt-5 rounded-xl border border-border bg-secondary/40 p-4">
+            <div className="mt-5 rounded-lg border border-border/70 bg-secondary/60 p-5">
               <div className="flex items-center justify-between gap-3">
                 <span className="font-mono text-[11px] font-medium uppercase tracking-widest text-muted-foreground">
                   Laptop Fund
@@ -122,7 +122,10 @@ export function BuyMeALaptop() {
                 aria-label="Laptop fund progress"
                 className="mt-3 h-2 overflow-hidden rounded-full bg-background"
               >
-                <div className="h-full rounded-full bg-primary" style={{ width: `${clamped}%` }} />
+                <div
+                  className="h-full rounded-full bg-gradient-to-r from-primary to-accent transition-all duration-500"
+                  style={{ width: `${clamped}%` }}
+                />
               </div>
               <p className="mt-3 text-center font-mono text-[13px] font-medium text-foreground">
                 {formatBDT(LAPTOP_FUND.current)} / {formatBDT(LAPTOP_FUND.goal)}
@@ -144,7 +147,7 @@ export function BuyMeALaptop() {
             <button
               type="button"
               onClick={() => setOpen(false)}
-              className="mt-3 w-full rounded-lg border border-border bg-card px-5 py-2.5 font-mono text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+              className="mt-3 min-h-11 w-full rounded-xl border border-border bg-card px-6 py-2.5 font-mono text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
             >
               Maybe later
             </button>

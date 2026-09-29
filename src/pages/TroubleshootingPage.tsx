@@ -61,33 +61,40 @@ export default function TroubleshootingPage() {
           ))}
         </div>
 
-        <div className="mt-6 space-y-3">
+        <div className="mt-6 space-y-4">
           {results.map((i) => {
             const isOpen = open === i.id;
             return (
               <article
                 key={i.id}
-                className="overflow-hidden rounded-xl border border-border bg-card"
+                className={`overflow-hidden rounded-xl border bg-card shadow-sm transition-all duration-200 ${isOpen ? "border-primary/50" : "border-border/70 hover:border-primary/30"}`}
               >
                 <button
                   type="button"
                   onClick={() => setOpen(isOpen ? null : i.id)}
                   aria-expanded={isOpen}
-                  className="grid w-full grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 py-3.5 text-left"
+                  className="grid w-full grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-4 text-left sm:px-6"
                 >
                   <span className="min-w-0">
-                    <span className="block font-display text-base text-foreground">{i.title}</span>
-                    <span className="mt-0.5 block text-xs text-muted-foreground">{i.symptoms}</span>
+                    <span className="block font-display text-base tracking-tight text-foreground">
+                      {i.title}
+                    </span>
+                    <span className="mt-0.5 block truncate text-xs text-muted-foreground sm:whitespace-normal">
+                      {i.symptoms}
+                    </span>
                   </span>
-                  <span aria-hidden className="shrink-0 font-mono text-accent">
+                  <span
+                    aria-hidden
+                    className={`grid h-9 w-9 shrink-0 place-items-center rounded-lg border font-mono text-sm transition-all duration-200 ${isOpen ? "border-primary bg-primary text-primary-foreground" : "border-border text-primary"}`}
+                  >
                     {isOpen ? "−" : "+"}
                   </span>
                 </button>
                 {isOpen && (
-                  <div className="border-t border-border px-4 py-4">
+                  <div className="border-t border-border/70 bg-secondary/30 px-5 py-5 sm:px-6">
                     <p className="text-sm leading-relaxed text-foreground">{i.fix}</p>
                     {i.commands && (
-                      <div className="mt-3">
+                      <div className="mt-4">
                         <CommandBlock commands={i.commands} />
                       </div>
                     )}

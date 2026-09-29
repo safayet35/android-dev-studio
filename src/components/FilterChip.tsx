@@ -13,10 +13,10 @@ export function FilterChip({
       onClick={onClick}
       aria-pressed={active}
       className={
-        "rounded-lg border px-2.5 py-1.5 font-mono text-xs transition-colors " +
+        "inline-flex min-h-10 items-center rounded-lg border px-4 py-1.5 font-mono text-xs transition-all duration-150 ease-out active:scale-[0.97] " +
         (active
-          ? "border-primary bg-primary text-primary-foreground"
-          : "border-border bg-secondary text-muted-foreground hover:text-foreground")
+          ? "border-primary bg-primary text-primary-foreground shadow-sm"
+          : "border-border bg-card text-muted-foreground hover:border-primary/50 hover:text-foreground")
       }
     >
       {children}

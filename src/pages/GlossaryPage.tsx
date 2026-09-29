@@ -51,20 +51,21 @@ export default function GlossaryPage() {
           ))}
         </div>
 
-        <dl className="mt-6 space-y-3">
+        <dl className="mt-6 grid gap-4 sm:mt-8 sm:gap-5 lg:grid-cols-2">
           {results.map((g) => (
-            <div key={g.term} className="rounded-xl border border-border bg-card p-4">
+            <div
+              key={g.term}
+              className="rounded-xl border border-border/70 bg-card p-5 shadow-sm transition-all duration-200 hover:border-primary/40 sm:p-6"
+            >
               <dt className="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-2">
-                <span className="min-w-0 font-display text-base break-words text-foreground">
+                <span className="min-w-0 font-display text-base tracking-tight break-words text-foreground">
                   {g.term}
                 </span>
-                <span className="shrink-0 font-mono text-[10px] uppercase tracking-wider text-accent">
+                <span className="shrink-0 rounded-lg border border-accent/30 bg-accent/10 px-2 py-0.5 font-mono text-[10px] font-medium uppercase tracking-wider text-accent">
                   {g.category}
                 </span>
               </dt>
-              <dd className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                {g.definition}
-              </dd>
+              <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{g.definition}</dd>
             </div>
           ))}
           {results.length === 0 && (

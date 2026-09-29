@@ -4,16 +4,34 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="by Safayet" />
-    <meta name="theme-color" content="oklch(0.19 0.019 260)" />
-    <meta name="description" content="Learn how to build and run real web development projects using an Android phone. Set up Termux, Acode, Node.js, Git, React, Next.js, MongoDB and more — all from Android." />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="oklch(0.978 0.006 260)"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="oklch(0.205 0.023 272)"
+    />
+    <meta
+      name="description"
+      content="Learn how to build and run real web development projects using an Android phone. Set up Termux, Acode, Node.js, Git, React, Next.js, MongoDB and more — all from Android."
+    />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Code With Android — Web Development on Android" />
-    <meta property="og:description" content="Learn web development using only an Android phone. Set up your complete coding environment and build real projects with Termux, Acode, Node.js, React, Next.js, Git and more." />
+    <meta
+      property="og:description"
+      content="Learn web development using only an Android phone. Set up your complete coding environment and build real projects with Termux, Acode, Node.js, React, Next.js, Git and more."
+    />
     <meta property="og:site_name" content="Code With Android" />
     <meta property="og:image" content="/og-image.jpeg" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Code With Android — Web Development on Android" />
-    <meta name="twitter:description" content="Learn web development using only an Android phone. Set up your complete coding environment and build real projects with Termux, Acode, Node.js, React, Next.js, Git and more." />
+    <meta
+      name="twitter:description"
+      content="Learn web development using only an Android phone. Set up your complete coding environment and build real projects with Termux, Acode, Node.js, React, Next.js, Git and more."
+    />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
@@ -22,6 +40,15 @@
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@400;600&display=swap"
     />
     <title>Code With Android — Web Development on Android | by Safayet</title>
+    <script>
+      try {
+        var t = localStorage.getItem("awd-theme-v1");
+        if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.dataset.theme = t;
+      } catch (e) {
+        document.documentElement.dataset.theme = "dark";
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

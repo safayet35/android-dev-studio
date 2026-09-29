@@ -121,24 +121,27 @@ export function HardwareChecker() {
 
   const toneClass =
     result.tone === "success"
-      ? "border-success text-success"
+      ? "border-success/50 bg-success/10 text-success"
       : result.tone === "warning"
-        ? "border-warning text-warning"
-        : "border-destructive text-destructive";
+        ? "border-warning/50 bg-warning/10 text-warning"
+        : "border-destructive/50 bg-destructive/10 text-destructive";
 
   return (
     <section
       id="checker"
-      className="scroll-mt-24 rounded-xl border border-border bg-card p-4 sm:p-6"
+      className="scroll-mt-24 rounded-xl border border-border/70 bg-card p-5 shadow-sm sm:p-6"
     >
-      <h2 className="font-display text-xl text-foreground sm:text-2xl">
+      <p className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-primary">
+        Compatibility check
+      </p>
+      <h2 className="mt-2 font-display text-xl tracking-tight text-foreground sm:text-2xl">
         Will your phone handle it?
       </h2>
       <p className="mt-1.5 text-sm text-muted-foreground">
         Four questions. Answers come from Settings, About phone.
       </p>
 
-      <div className="mt-5 space-y-5">
+      <div className="mt-6 space-y-6">
         <Choice
           label="Memory (RAM)"
           options={ramOptions}
@@ -184,15 +187,17 @@ export function HardwareChecker() {
           ref={resultRef}
           tabIndex={-1}
           role="status"
-          className={`mt-5 rounded-lg border bg-background/60 p-4 outline-none ${toneClass}`}
+          className={`mt-6 rounded-lg border p-5 outline-none ${toneClass}`}
         >
-          <p className="font-mono text-xs uppercase tracking-widest">Result</p>
-          <p className="mt-1 font-display text-xl">{result.level}</p>
+          <p className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] opacity-90">
+            Result
+          </p>
+          <p className="mt-1 font-display text-xl tracking-tight text-foreground">{result.level}</p>
           <p className="mt-1 text-sm text-foreground">{result.blurb}</p>
           <ul className="mt-3 space-y-2">
             {result.notes.map((n) => (
               <li key={n} className="flex gap-2 text-sm text-muted-foreground">
-                <span aria-hidden className="text-accent">
+                <span aria-hidden className="font-semibold text-accent">
                   •
                 </span>
                 <span>{n}</span>

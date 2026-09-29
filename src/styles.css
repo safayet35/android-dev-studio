@@ -26,25 +26,44 @@
 }
 
 :root {
-  --radius: 0.75rem;
+  --radius: 0.625rem;
   --nav-h: 80px;
+  color-scheme: light;
   @media (min-width: 640px) {
     --nav-h: 52px;
   }
-  --background: oklch(0.19 0.019 260);
-  --foreground: oklch(0.95 0.008 250);
-  --card: oklch(0.235 0.021 260);
-  --primary: oklch(0.78 0.17 145);
-  --primary-foreground: oklch(0.19 0.03 150);
-  --secondary: oklch(0.29 0.023 260);
-  --muted-foreground: oklch(0.7 0.018 255);
-  --accent: oklch(0.82 0.15 85);
-  --destructive: oklch(0.65 0.19 25);
-  --warning: oklch(0.8 0.14 70);
-  --success: oklch(0.78 0.17 145);
-  --terminal: oklch(0.145 0.018 260);
-  --terminal-foreground: oklch(0.9 0.04 150);
-  --border: oklch(0.33 0.022 260);
+  --background: oklch(0.978 0.006 260);
+  --foreground: oklch(0.23 0.025 270);
+  --card: oklch(1 0 0);
+  --primary: oklch(0.53 0.22 272);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.945 0.012 260);
+  --muted-foreground: oklch(0.47 0.022 270);
+  --accent: oklch(0.57 0.15 200);
+  --destructive: oklch(0.57 0.21 25);
+  --warning: oklch(0.66 0.15 72);
+  --success: oklch(0.58 0.165 160);
+  --terminal: oklch(0.19 0.022 272);
+  --terminal-foreground: oklch(0.91 0.035 200);
+  --border: oklch(0.875 0.016 260);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --background: oklch(0.205 0.023 272);
+  --foreground: oklch(0.94 0.01 260);
+  --card: oklch(0.26 0.028 272);
+  --primary: oklch(0.72 0.18 272);
+  --primary-foreground: oklch(0.2 0.035 272);
+  --secondary: oklch(0.315 0.032 272);
+  --muted-foreground: oklch(0.72 0.02 260);
+  --accent: oklch(0.8 0.135 200);
+  --destructive: oklch(0.68 0.19 25);
+  --warning: oklch(0.82 0.14 75);
+  --success: oklch(0.77 0.16 160);
+  --terminal: oklch(0.155 0.02 272);
+  --terminal-foreground: oklch(0.91 0.035 200);
+  --border: oklch(0.365 0.032 272);
 }
 
 @layer base {
@@ -52,11 +71,19 @@
     border-color: var(--color-border);
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    transition:
+      background-color 200ms ease-out,
+      color 200ms ease-out;
   }
 
   h1,
@@ -64,7 +91,12 @@
   h3 {
     font-family: var(--font-display);
     font-weight: 600;
-    letter-spacing: -0.015em;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
   }
 
   :is(a, button, input, [tabindex]):focus-visible {
@@ -84,8 +116,30 @@
 
 @utility grid-backdrop {
   background-image:
-    linear-gradient(var(--color-border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+    linear-gradient(
+      color-mix(in oklch, var(--color-primary) 22%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      color-mix(in oklch, var(--color-primary) 22%, transparent) 1px,
+      transparent 1px
+    );
   background-size: 44px 44px;
-  opacity: 0.25;
+  opacity: 0.35;
+  mask-image: radial-gradient(ellipse 90% 80% at 50% 20%, black 30%, transparent 75%);
+}
+
+@utility hero-glow {
+  background:
+    radial-gradient(
+      ellipse 55% 45% at 20% 10%,
+      color-mix(in oklch, var(--color-primary) 18%, transparent),
+      transparent
+    ),
+    radial-gradient(
+      ellipse 45% 40% at 85% 25%,
+      color-mix(in oklch, var(--color-accent) 14%, transparent),
+      transparent
+    );
 }

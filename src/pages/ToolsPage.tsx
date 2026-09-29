@@ -3,9 +3,12 @@ import { useDocumentMeta } from "@/hooks/use-document-meta";
 import { toolPairs } from "@/lib/content";
 
 const gapLabel = {
-  same: { text: "Same thing", cls: "border-success text-success" },
-  close: { text: "Close enough", cls: "border-warning text-warning" },
-  workaround: { text: "Needs a workaround", cls: "border-destructive text-destructive" },
+  same: { text: "Same thing", cls: "border-success/40 bg-success/10 text-success" },
+  close: { text: "Close enough", cls: "border-warning/40 bg-warning/10 text-warning" },
+  workaround: {
+    text: "Needs a workaround",
+    cls: "border-destructive/40 bg-destructive/10 text-destructive",
+  },
 };
 
 export default function ToolsPage() {
@@ -25,35 +28,40 @@ export default function ToolsPage() {
         title="What you use on a PC, and what replaces it"
         intro="Most of a web development workflow moves to a phone unchanged. These cards show which parts are identical, which are a slight step down, and where you need a different approach."
       />
-      <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
-        <div className="grid gap-4 sm:grid-cols-2">
+      <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-12">
+        <div className="grid gap-4 sm:gap-5 lg:grid-cols-3">
           {toolPairs.map((t) => {
             const g = gapLabel[t.gap];
             return (
-              <article key={t.task} className="rounded-xl border border-border bg-card p-4">
+              <article
+                key={t.task}
+                className="rounded-xl border border-border/70 bg-card p-5 shadow-sm transition-all duration-200 hover:border-primary/40 hover:shadow-md sm:p-6"
+              >
                 <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3">
-                  <h2 className="min-w-0 font-display text-lg text-foreground">{t.task}</h2>
+                  <h2 className="min-w-0 font-display text-lg tracking-tight text-foreground">
+                    {t.task}
+                  </h2>
                   <span
-                    className={`shrink-0 rounded-full border px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider ${g.cls}`}
+                    className={`shrink-0 rounded-lg border px-2.5 py-1 font-mono text-[10px] font-medium uppercase tracking-wider ${g.cls}`}
                   >
                     {g.text}
                   </span>
                 </div>
-                <div className="mt-3 grid grid-cols-1 gap-2 min-[420px]:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] min-[420px]:items-center">
-                  <span className="rounded-lg bg-secondary px-2.5 py-1.5 font-mono text-xs break-words text-muted-foreground">
+                <div className="mt-4 grid grid-cols-1 gap-2.5 min-[420px]:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] min-[420px]:items-center">
+                  <span className="rounded-lg bg-secondary px-2.5 py-2 font-mono text-xs break-words text-muted-foreground">
                     {t.pc}
                   </span>
                   <span
                     aria-hidden
-                    className="rotate-90 justify-self-center text-accent min-[420px]:rotate-0"
+                    className="rotate-90 justify-self-center font-semibold text-accent min-[420px]:rotate-0"
                   >
                     →
                   </span>
-                  <span className="rounded-lg bg-primary/15 px-2.5 py-1.5 font-mono text-xs break-words text-primary">
+                  <span className="rounded-lg border border-primary/30 bg-primary/10 px-2.5 py-2 font-mono text-xs break-words text-primary">
                     {t.android}
                   </span>
                 </div>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{t.detail}</p>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{t.detail}</p>
               </article>
             );
           })}

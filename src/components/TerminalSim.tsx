@@ -72,20 +72,22 @@ export function TerminalSim() {
   };
 
   return (
-    <div className="overflow-hidden rounded-xl border border-border bg-terminal">
-      <div className="flex items-center gap-2 border-b border-border px-3 py-2">
+    <div className="overflow-hidden rounded-xl border border-border/60 bg-terminal shadow-lg">
+      <div className="flex items-center gap-2 border-b border-white/10 bg-white/[0.03] px-4 py-3">
         <span aria-hidden className="flex items-center gap-2">
           <span className="h-2.5 w-2.5 rounded-full bg-destructive" />
           <span className="h-2.5 w-2.5 rounded-full bg-warning" />
           <span className="h-2.5 w-2.5 rounded-full bg-success" />
         </span>
-        <span className="ml-2 font-mono text-xs text-muted-foreground">termux</span>
+        <span className="ml-2 inline-flex items-center gap-1.5 rounded-full border border-white/10 px-2.5 py-0.5 font-mono text-[11px] text-terminal-foreground/70">
+          termux
+        </span>
       </div>
       <div
         role="log"
         aria-live="polite"
         aria-label="Simulated terminal output"
-        className="h-72 overflow-y-auto px-3 py-3 font-mono text-[13px] leading-relaxed"
+        className="h-72 overflow-y-auto px-4 py-4 font-mono text-[13px] leading-relaxed sm:px-5"
       >
         {lines.map((l, i) => (
           <p
@@ -95,10 +97,10 @@ export function TerminalSim() {
                 ? "text-terminal-foreground"
                 : l.kind === "err"
                   ? "text-destructive"
-                  : "text-muted-foreground"
+                  : "text-terminal-foreground/65"
             }
           >
-            {l.kind === "in" && <span className="text-accent">~ $ </span>}
+            {l.kind === "in" && <span className="font-semibold text-accent">~ $ </span>}
             <span className="whitespace-pre-wrap break-words">{l.text}</span>
           </p>
         ))}
@@ -106,9 +108,9 @@ export function TerminalSim() {
       </div>
       <form
         onSubmit={submit}
-        className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-2 border-t border-border px-3 py-2"
+        className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-3 border-t border-white/10 bg-white/[0.02] px-4 py-3 sm:px-5"
       >
-        <span className="shrink-0 font-mono text-sm text-accent">~ $</span>
+        <span className="shrink-0 font-mono text-sm font-semibold text-accent">~ $</span>
         <input
           value={value}
           onChange={(e) => setValue(e.target.value)}
@@ -117,7 +119,7 @@ export function TerminalSim() {
           autoCapitalize="none"
           spellCheck={false}
           placeholder="type a command"
-          className="min-w-0 bg-transparent font-mono text-[13px] text-terminal-foreground outline-none placeholder:text-muted-foreground"
+          className="min-w-0 bg-transparent font-mono text-sm text-terminal-foreground outline-none placeholder:text-terminal-foreground/40"
         />
       </form>
     </div>

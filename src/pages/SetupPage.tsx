@@ -38,8 +38,8 @@ export default function SetupPage() {
         intro="Work through the modules in order. Tap a step to mark it done; your progress is saved on this device and will still be here tomorrow."
       />
 
-      <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
-        <div className="sticky top-[calc(var(--nav-h)+8px)] z-40 rounded-xl border border-border bg-card/95 p-4 backdrop-blur">
+      <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-12">
+        <div className="sticky top-[calc(var(--nav-h)+8px)] z-40 rounded-xl border border-border/70 bg-card/95 p-4 shadow-md backdrop-blur-md sm:p-5">
           <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
             <div className="min-w-0">
               <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
@@ -52,7 +52,7 @@ export default function SetupPage() {
             <button
               type="button"
               onClick={reset}
-              className="shrink-0 rounded-lg border border-border px-3 py-2 font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
+              className="shrink-0 rounded-xl border border-border px-4 py-2.5 font-mono text-xs text-muted-foreground transition-all hover:border-primary/50 hover:text-foreground active:scale-95"
             >
               Reset
             </button>
@@ -66,52 +66,58 @@ export default function SetupPage() {
             className="mt-3 h-2 overflow-hidden rounded-full bg-secondary"
           >
             <div
-              className="h-full rounded-full bg-primary transition-all duration-500"
+              className="h-full rounded-full bg-gradient-to-r from-primary to-accent transition-all duration-500"
               style={{ width: `${pct}%` }}
             />
           </div>
         </div>
 
-        <div className="mt-8 space-y-10">
+        <div className="mt-10 space-y-12">
           {modules.map((m, mi) => {
             const moduleDone = m.steps.filter((s) => isDone(s.id)).length;
             return (
               <section key={m.slug} id={m.slug} className="scroll-mt-32">
-                <div className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-3">
-                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-border bg-card font-mono text-sm text-accent">
+                <div className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-4">
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-primary/30 bg-primary/10 font-mono text-sm font-semibold text-primary">
                     {String(mi + 1).padStart(2, "0")}
                   </span>
                   <div className="min-w-0">
-                    <h2 className="font-display text-xl text-foreground">{m.title}</h2>
-                    <p className="mt-1 text-sm text-muted-foreground">{m.tagline}</p>
-                    <p className="mt-1 font-mono text-xs text-accent">
+                    <h2 className="font-display text-xl tracking-tight text-foreground">
+                      {m.title}
+                    </h2>
+                    <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                      {m.tagline}
+                    </p>
+                    <p className="mt-2 inline-flex items-center gap-1.5 rounded-lg bg-secondary px-3 py-1.5 font-mono text-[11px] text-muted-foreground">
                       ~{m.minutes} min · {moduleDone}/{m.steps.length} done
                     </p>
                   </div>
                 </div>
 
-                <ol className="mt-4 space-y-3">
+                <ol className="mt-5 space-y-4">
                   {m.steps.map((s) => {
                     const checked = isDone(s.id);
                     return (
                       <li
                         key={s.id}
                         className={
-                          "rounded-xl border bg-card p-4 transition-colors " +
-                          (checked ? "border-primary/60" : "border-border")
+                          "rounded-xl border p-5 shadow-sm transition-all duration-200 sm:p-6 " +
+                          (checked
+                            ? "border-primary/50 bg-primary/[0.04]"
+                            : "border-border/70 bg-card")
                         }
                       >
-                        <div className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-3">
+                        <div className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-4">
                           <button
                             type="button"
                             onClick={() => toggle(s.id)}
                             aria-pressed={checked}
                             aria-label={`Mark step complete: ${s.title}`}
                             className={
-                              "mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded border transition-colors " +
+                              "mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-lg border transition-all duration-150 active:scale-95 " +
                               (checked
-                                ? "border-primary bg-primary text-primary-foreground"
-                                : "border-border bg-secondary")
+                                ? "border-primary bg-primary text-primary-foreground shadow-sm"
+                                : "border-border bg-card hover:border-primary/60")
                             }
                           >
                             {checked && <Check className="h-3.5 w-3.5" />}
@@ -119,7 +125,7 @@ export default function SetupPage() {
                           <div className="min-w-0">
                             <h3
                               className={
-                                "font-display text-base " +
+                                "font-display text-base tracking-tight " +
                                 (checked ? "text-muted-foreground line-through" : "text-foreground")
                               }
                             >
@@ -129,26 +135,26 @@ export default function SetupPage() {
                               {s.body}
                             </p>
                             {s.commands && (
-                              <div className="mt-3">
+                              <div className="mt-4">
                                 <CommandBlock commands={s.commands} />
                               </div>
                             )}
                             {s.id === "acode-plugins" && (
-                              <ul className="mt-3 grid gap-3 sm:grid-cols-2">
+                              <ul className="mt-4 grid gap-4 sm:grid-cols-2">
                                 {acodeExtensions.map((e) => (
                                   <ExtensionCard key={e.slug} extension={e} />
                                 ))}
                               </ul>
                             )}
                             {s.id === "material-files" && (
-                              <div className="mt-4 rounded-lg border border-border bg-secondary/40 p-4 sm:p-5">
-                                <p className="mb-4 font-mono text-xs uppercase tracking-widest text-accent">
+                              <div className="mt-5 rounded-lg border border-border/70 bg-secondary/60 p-5 sm:p-6">
+                                <p className="mb-4 font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-primary">
                                   Setup flow
                                 </p>
-                                <ol className="space-y-2">
+                                <ol className="space-y-2.5">
                                   {materialFilesSteps.map((step, i) => (
                                     <li key={i} className="flex items-start gap-3">
-                                      <span className="mt-px grid h-7 w-7 shrink-0 place-items-center rounded-full border border-border bg-card font-mono text-xs text-accent">
+                                      <span className="mt-px grid h-8 w-8 shrink-0 place-items-center rounded-lg border border-primary/30 bg-primary/10 font-mono text-xs font-semibold text-primary">
                                         {i + 1}
                                       </span>
                                       <span className="min-w-0 pt-1 text-sm leading-snug text-muted-foreground">
@@ -157,13 +163,13 @@ export default function SetupPage() {
                                     </li>
                                   ))}
                                 </ol>
-                                <p className="mt-5 rounded-lg border-l-2 border-accent bg-secondary/60 px-3 py-2.5 text-xs leading-relaxed text-muted-foreground sm:text-sm">
+                                <p className="mt-5 rounded-lg border-l-2 border-primary bg-card px-4 py-3 text-xs leading-relaxed text-muted-foreground sm:text-sm">
                                   Termux is primarily a terminal environment, so managing files
                                   through a graphical file manager can be much more convenient when
                                   working with images, assets, downloads, or project files. You can
                                   continue doing everything through Termux commands if you prefer.
                                 </p>
-                                <p className="mt-3 rounded-lg border-l-2 border-warning bg-secondary/60 px-3 py-2.5 text-xs leading-relaxed text-muted-foreground sm:text-sm">
+                                <p className="mt-3 rounded-lg border-l-2 border-warning bg-card px-4 py-3 text-xs leading-relaxed text-muted-foreground sm:text-sm">
                                   Only grant folder access when you understand what you&apos;re
                                   sharing with the file manager. Avoid deleting files or folders you
                                   don&apos;t recognize, especially inside your development
@@ -172,7 +178,7 @@ export default function SetupPage() {
                               </div>
                             )}
                             {s.note && (
-                              <p className="mt-3 rounded-lg border-l-2 border-accent bg-secondary/60 px-3 py-2 text-xs text-muted-foreground">
+                              <p className="mt-4 rounded-lg border-l-2 border-accent bg-secondary/60 px-4 py-3 text-xs leading-relaxed text-muted-foreground">
                                 {s.note}
                               </p>
                             )}

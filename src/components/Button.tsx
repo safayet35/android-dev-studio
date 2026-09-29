@@ -1,11 +1,11 @@
 import type { ButtonHTMLAttributes } from "react";
 
 export const btnBase =
-  "inline-flex items-center justify-center font-mono transition active:scale-[0.97]";
+  "inline-flex min-h-11 items-center justify-center gap-2 font-mono transition-all duration-150 ease-out active:scale-[0.98]";
 
-export const btnPrimary = `${btnBase} rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90`;
+export const btnPrimary = `${btnBase} rounded-xl bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm hover:shadow-md hover:brightness-110`;
 
-export const btnSecondary = `${btnBase} rounded-lg border border-border px-5 py-2.5 text-sm text-foreground hover:border-accent hover:text-accent`;
+export const btnSecondary = `${btnBase} rounded-xl border border-border bg-card px-6 py-2.5 text-sm font-medium text-foreground hover:border-primary/60 hover:text-primary`;
 
 type Variant = "primary" | "secondary";
 
